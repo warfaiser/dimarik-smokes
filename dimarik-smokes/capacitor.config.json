@@ -1,8 +1,0 @@
-{
-  "appId": "ru.dimarik.smokes",
-  "appName": "Димарик Smokes",
-  "webDir": ".",
-  "server": { "androidScheme": "https" },
-  "android": { "allowMixedContent": false },
-  "ios": { "contentInset": "always" }
-}
