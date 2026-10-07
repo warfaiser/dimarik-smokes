@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Раскидки от Димарика — CS2 Smokes</title>
+<meta name="description" content="Лучшие актуальные раскидки дымов CS2 на русском: Dust 2, Mirage, Inferno, Nuke, Ancient, Overpass, Anubis. Внутренний плеер, избранное, релакс-музыка.">
+<meta name="theme-color" content="#0a0a0c">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Димарик Smokes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ БАЗА ============ */
+:root{
+  --bg:#0a0a0c; --bg2:#111117; --card:#15151d; --line:rgba(255,255,255,.08);
+  --txt:#f3f3f6; --mut:#9a9aae; --acc:#b6ff3b; --acc2:#5a8cff;
+  --ma:#b6ff3b; --mb:#2a4d10; --mbg:#0a0a0c; --mglow:#d2ff7a;
+  --r:18px; --head:'Unbounded','Arial Black',Impact,sans-serif; --body:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}body{min-height:100%;background:var(--bg);color:var(--txt);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:radial-gradient(1200px 600px at 80% -10%,color-mix(in srgb,var(--ma) 14%,transparent),transparent 60%),radial-gradient(900px 500px at -10% 110%,color-mix(in srgb,var(--mb) 40%,transparent),transparent 60%),var(--mbg);transition:background 1s ease}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--ma);color:#000}
+::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#2a2a36;border-radius:10px;border:2px solid var(--bg)}
+.hide{display:none!important}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* ============ SPLASH ============ */
+#splash{position:fixed;inset:0;z-index:100;background:#050507;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px;transition:opacity .9s ease,visibility .9s}
+#splash.out{opacity:0;visibility:hidden}
+#splash canvas{position:absolute;inset:0;width:100%;height:100%}
+.sp-in{position:relative;z-index:2;max-width:900px}
+.sp-kick{font-family:var(--head);font-weight:600;letter-spacing:.35em;font-size:clamp(10px,1.4vw,13px);color:var(--acc);text-transform:uppercase;opacity:0;animation:fadeUp .8s .3s forwards}
+.sp-title{font-family:var(--head);font-weight:900;font-size:clamp(26px,5.2vw,64px);line-height:1.05;margin:18px 0 14px;text-transform:uppercase}
+.sp-title .w{display:inline-block;margin-right:.25em}
+.sp-title .ch{display:inline-block;opacity:0;transform:translateY(30px) rotate(3deg);animation:letter .7s cubic-bezier(.2,.8,.2,1) forwards;background:linear-gradient(180deg,#fff,#c9c9d6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sp-title .hl .ch{background:linear-gradient(90deg,var(--acc),#7dff9a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sp-sub{color:var(--mut);font-size:clamp(13px,1.6vw,17px);opacity:0;animation:fadeUp .8s 1.6s forwards}
+.sp-btn{margin-top:36px;opacity:0;animation:fadeUp .8s 2s forwards;display:inline-flex;align-items:center;gap:14px;padding:16px 34px;border-radius:999px;background:var(--acc);color:#0a0a0c;font-weight:800;font-size:16px;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 0 0 0 color-mix(in srgb,var(--acc) 50%,transparent);animation:fadeUp .8s 2s forwards,pulse 2.2s 2.8s infinite;transition:transform .2s}
+.sp-btn:hover{transform:translateY(-2px) scale(1.03)}
+.sp-music{margin-top:18px;opacity:0;animation:fadeUp .8s 2.3s forwards;color:var(--mut);font-size:13px;display:flex;gap:10px;align-items:center;justify-content:center}
+.sp-music label{display:flex;gap:8px;align-items:center;cursor:pointer}
+@keyframes letter{to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--acc) 55%,transparent)}70%{box-shadow:0 0 0 22px transparent}100%{box-shadow:0 0 0 0 transparent}}
+
+/* ============ TOPBAR ============ */
+.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:14px;padding:calc(10px + var(--safe-t)) 18px 10px;backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);background:color-mix(in srgb,var(--mbg) 72%,transparent);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:800;font-size:15px;letter-spacing:.04em;white-space:nowrap}
+.logo i{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--ma),var(--mb));display:grid;place-items:center;box-shadow:0 0 24px color-mix(in srgb,var(--ma) 40%,transparent)}
+.logo i svg{width:20px;height:20px}
+.logo small{color:var(--ma);font-size:10px;display:block;letter-spacing:.3em;font-weight:600}
+.nav{display:flex;gap:4px;margin-left:8px}
+.nav a{padding:8px 14px;border-radius:10px;font-weight:600;font-size:14px;color:var(--mut);transition:.2s}
+.nav a:hover,.nav a.on{color:var(--txt);background:rgba(255,255,255,.06)}
+.spacer{flex:1}
+/* музыкальный виджет */
+.mw{display:flex;align-items:center;gap:10px;padding:6px 8px 6px 6px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.03)}
+.mw-btn{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--ma),color-mix(in srgb,var(--ma) 60%,#fff 0%));display:grid;place-items:center;color:#000;transition:.2s;flex:none}
+.mw-btn:hover{transform:scale(1.06)}
+.mw-btn svg{width:16px;height:16px}
+.mw-bars{display:flex;gap:2px;align-items:flex-end;height:16px;width:22px}
+.mw-bars b{flex:1;background:var(--ma);border-radius:2px;height:30%;transition:.2s}
+.mw.playing .mw-bars b{animation:bar 1s ease-in-out infinite}
+.mw.playing .mw-bars b:nth-child(2){animation-delay:.2s}.mw.playing .mw-bars b:nth-child(3){animation-delay:.4s}.mw.playing .mw-bars b:nth-child(4){animation-delay:.1s}
+@keyframes bar{0%,100%{height:30%}50%{height:100%}}
+.mw-name{font-size:12px;color:var(--mut);white-space:nowrap;max-width:120px;overflow:hidden;text-overflow:ellipsis}
+.mw input[type=range]{width:90px}
+.mw-more{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:var(--mut)}
+.mw-more:hover{color:#fff;background:rgba(255,255,255,.08)}
+/* панель музыки */
+.mpanel{position:fixed;right:18px;top:calc(70px + var(--safe-t));z-index:60;width:300px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 30px 80px rgba(0,0,0,.6);transform:translateY(-10px);opacity:0;pointer-events:none;transition:.25s}
+.mpanel.open{transform:none;opacity:1;pointer-events:auto}
+.mpanel h4{font-family:var(--head);font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.mrow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:13px}
+.mrow:first-of-type{border-top:0}
+.mrow input[type=range]{width:130px}
+.tracks{display:grid;gap:6px;margin-top:6px}
+.tracks button{text-align:left;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.04);font-size:13px;display:flex;justify-content:space-between;align-items:center;transition:.2s}
+.tracks button:hover{background:rgba(255,255,255,.08)}
+.tracks button.on{background:color-mix(in srgb,var(--ma) 18%,transparent);color:var(--ma)}
+.tracks small{color:var(--mut);font-size:11px}
+/* тумблер */
+.sw{position:relative;width:40px;height:22px;border-radius:999px;background:#2a2a36;transition:.2s;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s}
+.sw.on{background:var(--ma)}.sw.on::after{left:21px;background:#000}
+input[type=range]{-webkit-appearance:none;appearance:none;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--ma) var(--p,50%),#2a2a36 var(--p,50%));outline:0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--ma);cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.5)}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--ma);cursor:pointer}
+
+/* поиск */
+.search{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:999px;padding:0 6px 0 14px;height:40px;width:260px;transition:.25s}
+.search:focus-within{width:340px;border-color:color-mix(in srgb,var(--ma) 60%,transparent);box-shadow:0 0 0 3px color-mix(in srgb,var(--ma) 15%,transparent)}
+.search input{flex:1;background:none;border:0;outline:0;color:#fff;font:inherit;font-size:14px;min-width:0}
+.search svg{width:16px;height:16px;color:var(--mut);flex:none}
+.search kbd{font-size:10px;color:var(--mut);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:5px;padding:2px 6px}
+.install{display:none;align-items:center;gap:8px;padding:0 14px;height:40px;border-radius:999px;background:var(--ma);color:#000;font-weight:800;font-size:13px}
+.install.show{display:inline-flex}
+.install svg{width:16px;height:16px}
+.msearch{display:none}
+/* окно клавиш */
+.modal{position:fixed;inset:0;z-index:95;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);display:none;place-items:center;padding:20px}
+.modal.open{display:grid}
+.modal .box{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;max-width:560px;width:100%;max-height:85vh;overflow:auto;animation:vin .3s}
+.modal h3{font-family:var(--head);font-size:16px;text-transform:uppercase;margin-bottom:16px;display:flex;justify-content:space-between}
+.kgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;font-size:13px;color:var(--mut)}
+.kgrid div{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--line)}
+.kgrid kbd{background:rgba(255,255,255,.08);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:2px 8px;font-family:inherit;font-weight:700;color:#fff;font-size:12px;white-space:nowrap}
+.offline{position:fixed;top:calc(64px + var(--safe-t));left:50%;transform:translateX(-50%);z-index:70;background:#ff4d4d;color:#fff;font-weight:700;font-size:13px;padding:8px 16px;border-radius:999px;display:none}
+.offline.show{display:block}
+.cont{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px}
+.cont .fc{flex-basis:260px}
+.cont .fc .th .bar{position:absolute;left:0;bottom:0;height:3px;background:var(--ca);z-index:2}
+.cont .fc .th .left{position:absolute;left:10px;bottom:10px;z-index:2;font-size:11px;font-weight:700;background:rgba(0,0,0,.7);padding:3px 7px;border-radius:6px}
+mark{background:color-mix(in srgb,var(--ma) 35%,transparent);color:#fff;border-radius:3px;padding:0 2px}
+/* тренировка */
+.tr-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.code{background:#07070a;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.code header{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);font-size:13px;font-weight:700}
+.code header small{display:block;color:var(--mut);font-weight:500;margin-top:2px}
+.code pre{padding:14px 16px;font:12.5px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#cfd3ff;white-space:pre-wrap;word-break:break-all;max-height:300px;overflow:auto}
+.code pre b{color:var(--ma);font-weight:600}
+.copy{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:9px;background:var(--ma);color:#000;font-weight:800;font-size:12px;white-space:nowrap;flex:none}
+.copy.done{background:#fff}
+.steps{counter-reset:st;display:grid;gap:10px}
+.steps div{position:relative;padding:14px 16px 14px 56px;background:var(--card);border:1px solid var(--line);border-radius:14px;font-size:14px;line-height:1.5}
+.steps div::before{counter-increment:st;content:counter(st);position:absolute;left:14px;top:12px;width:30px;height:30px;border-radius:50%;background:var(--ma);color:#000;font-family:var(--head);font-weight:800;display:grid;place-items:center;font-size:13px}
+.steps code{background:rgba(255,255,255,.08);padding:1px 6px;border-radius:5px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;color:var(--ma)}
+.mapsel{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 18px}
+.mapsel a{padding:9px 14px;border-radius:999px;border:1px solid var(--line);font-weight:700;font-size:13px;color:var(--mut);transition:.2s}
+.mapsel a:hover{color:#fff}
+.mapsel a.on{background:var(--ma);color:#000;border-color:transparent}
+.setrow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);font-size:14px}
+.setrow small{display:block;color:var(--mut);font-size:12px;margin-top:3px}
+.btn.danger{background:rgba(255,77,109,.12);color:#ff6b86;border-color:rgba(255,77,109,.3)}
+@media (max-width:900px){.tr-grid{grid-template-columns:1fr}}
+/* чек-лист */
+.chk{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.chk label{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:var(--card);border:1px solid var(--line);border-radius:14px;cursor:pointer;transition:.2s}
+.chk label:hover{border-color:color-mix(in srgb,var(--ma) 50%,transparent)}
+.chk label.on{background:color-mix(in srgb,var(--ma) 10%,transparent);border-color:color-mix(in srgb,var(--ma) 50%,transparent)}
+.chk input{display:none}
+.chk .box{flex:none;width:22px;height:22px;border-radius:7px;border:2px solid var(--mut);display:grid;place-items:center;margin-top:1px;transition:.2s}
+.chk label.on .box{background:var(--ma);border-color:var(--ma)}
+.chk .box svg{width:14px;height:14px;opacity:0;stroke:#000;stroke-width:3;fill:none}
+.chk label.on .box svg{opacity:1}
+.chk .n{font-weight:700;font-size:14px;display:block}
+.chk label.on .n{text-decoration:line-through;color:var(--mut)}
+.chk .d{font-size:12px;color:var(--mut);margin-top:2px;display:block}
+.chk .side-tag{margin-left:auto;flex:none;font-size:10px;font-weight:800;padding:3px 7px;border-radius:6px;letter-spacing:.05em}
+.chk .side-tag.T{background:rgba(255,170,60,.18);color:#ffb85c}.chk .side-tag.CT{background:rgba(90,140,255,.18);color:#8fb3ff}
+.ring{position:relative;width:88px;height:88px;flex:none}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:8}
+.ring .bg{stroke:rgba(255,255,255,.1)}.ring .fg{stroke:var(--ma);stroke-linecap:round;transition:stroke-dashoffset .6s}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--head);font-size:16px}
+.prog-card{display:flex;gap:18px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 20px;margin-bottom:16px}
+.prog-card h3{font-family:var(--head);font-size:15px;text-transform:uppercase}
+.prog-card p{color:var(--mut);font-size:13px;margin-top:4px}
+.mapc .mp{position:absolute;right:16px;bottom:18px;width:46px;height:46px}
+.mapc .mp b{font-size:10px}
+.io textarea{width:100%;min-height:90px;background:#07070a;border:1px solid var(--line);border-radius:12px;color:#cfd3ff;font:12px ui-monospace,Menlo,Consolas,monospace;padding:12px;resize:vertical;outline:0}
+.io textarea:focus{border-color:var(--ma)}
+/* источники */
+.src{display:flex;gap:6px;margin-bottom:10px;align-items:center;flex-wrap:wrap}
+.src button{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);font-weight:700;font-size:13px;color:var(--mut);transition:.2s}
+.src button:hover{color:#fff}
+.src button.on{background:var(--ma);color:#000;border-color:transparent}
+.src button i{width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.7}
+.src .hint{font-size:12px;color:var(--mut);margin-left:auto}
+.badge.rt{background:rgba(0,200,120,.18);color:#4ee39a;border:1px solid rgba(0,200,120,.3)}
+.badge.ytonly{background:rgba(255,255,255,.06);color:var(--mut)}
+.novpn{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--mut);font-weight:600;cursor:pointer;margin-left:auto;font-family:var(--body);text-transform:none;letter-spacing:0}
+.novpn .sw{transform:scale(.85)}
+.th.rtph{display:grid;place-items:center;background:linear-gradient(135deg,color-mix(in srgb,var(--ca,var(--ma)) 35%,#000),#000)!important}
+.th.rtph span.lg{font-family:var(--head);font-weight:900;font-size:22px;color:#fff;opacity:.9;letter-spacing:.02em}
+.player.rtmode .ctrls,.player.rtmode .shield,.player.rtmode .big{display:none}
+.player.rtmode iframe{pointer-events:auto}
+/* ============ LAYOUT ============ */
+main{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:28px 18px calc(60px + var(--safe-b))}
+.view{animation:vin .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes vin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.kick{font-family:var(--head);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ma);font-weight:600}
+h1{font-family:var(--head);font-weight:900;text-transform:uppercase;line-height:.98;letter-spacing:-.01em}
+h2{font-family:var(--head);font-weight:800;font-size:22px;text-transform:uppercase;margin:38px 0 16px;display:flex;align-items:center;gap:12px}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:12px;font-weight:700;font-size:14px;background:rgba(255,255,255,.06);border:1px solid var(--line);transition:.2s}
+.btn:hover{background:rgba(255,255,255,.1);transform:translateY(-1px)}
+.btn.pri{background:var(--ma);color:#000;border-color:transparent;box-shadow:0 10px 30px color-mix(in srgb,var(--ma) 30%,transparent)}
+.btn svg{width:16px;height:16px}
+
+/* ============ HOME ============ */
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;padding:30px 0 10px}
+.hero h1{font-size:clamp(34px,6vw,78px);margin:14px 0 18px}
+.hero h1 em{font-style:normal;color:var(--ma);text-shadow:0 0 40px color-mix(in srgb,var(--ma) 50%,transparent)}
+.hero p{color:var(--mut);font-size:16px;max-width:560px;line-height:1.6}
+.hero-acts{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 16px;position:relative;overflow:hidden}
+.stat b{font-family:var(--head);font-size:34px;font-weight:900;display:block;color:#fff}
+.stat span{color:var(--mut);font-size:12px}
+.stat::before{content:"";position:absolute;right:-20px;top:-20px;width:80px;height:80px;border-radius:50%;background:color-mix(in srgb,var(--ma) 20%,transparent);filter:blur(20px)}
+.ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:30px 0 10px;padding:10px 0;white-space:nowrap;font-family:var(--head);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+.ticker div{display:inline-block;animation:tick 40s linear infinite}
+.ticker span{margin:0 28px}.ticker span::before{content:"◆";color:var(--ma);margin-right:28px}
+@keyframes tick{to{transform:translateX(-50%)}}
+.maps{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.mapc{position:relative;height:230px;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:var(--mbgc);isolation:isolate;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s;display:block}
+.mapc:hover{transform:translateY(-6px);box-shadow:0 30px 60px -20px color-mix(in srgb,var(--ca) 50%,transparent)}
+.mapc .art{position:absolute;inset:0;z-index:-1}
+.mapc .art svg{width:100%;height:100%}
+.mapc .grad{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.85));z-index:-1}
+.mapc .in{position:absolute;left:20px;right:20px;bottom:18px}
+.mapc .t{font-family:var(--head);font-weight:900;font-size:30px;text-transform:uppercase;color:#fff;line-height:1}
+.mapc .s{font-size:12px;color:var(--ca);letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-top:6px}
+.mapc .n{position:absolute;top:16px;right:16px;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700}
+.mapc .num{position:absolute;top:10px;left:18px;font-family:var(--head);font-size:60px;font-weight:900;color:rgba(255,255,255,.07);line-height:1}
+.fresh{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
+.fresh::-webkit-scrollbar{height:6px}
+.fc{flex:0 0 300px;scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.25s}
+.fc:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--ca) 60%,transparent)}
+.fc .th{aspect-ratio:16/9;background:#000 center/cover;position:relative}
+.fc .th::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.7))}
+.fc .in{padding:12px 14px}
+.fc .t{font-weight:700;font-size:14px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.fc .m{color:var(--mut);font-size:12px;margin-top:6px}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border-radius:999px;font-size:11px;font-weight:700;background:rgba(255,255,255,.08)}
+.badge.hot{background:var(--ca,var(--ma));color:#000}
+.badge.map{position:absolute;left:10px;top:10px;z-index:2;background:rgba(0,0,0,.6);color:var(--ca);border:1px solid color-mix(in srgb,var(--ca) 50%,transparent)}
+.dur{position:absolute;right:8px;bottom:8px;z-index:2;background:rgba(0,0,0,.8);font-size:11px;font-weight:700;padding:3px 7px;border-radius:6px}
+
+/* ============ MAP PAGE ============ */
+.mhead{position:relative;border-radius:28px;overflow:hidden;border:1px solid var(--line);min-height:300px;display:flex;align-items:flex-end;padding:34px;margin-bottom:26px;isolation:isolate}
+.mhead .art{position:absolute;inset:0;z-index:-1;opacity:.9}
+.mhead .art svg{width:100%;height:100%}
+.mhead .grad{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(0,0,0,.85) 20%,rgba(0,0,0,.2) 70%),linear-gradient(0deg,rgba(0,0,0,.8),transparent 60%)}
+.mhead h1{font-size:clamp(40px,8vw,110px);color:#fff;text-shadow:0 10px 60px rgba(0,0,0,.6)}
+.mhead h1 small{display:block;font-size:clamp(14px,2vw,22px);color:var(--ma);letter-spacing:.3em;font-weight:600;margin-bottom:8px}
+.mhead p{color:#d8d8e2;max-width:620px;margin-top:14px;line-height:1.6;font-size:15px}
+.back{display:inline-flex;align-items:center;gap:8px;color:var(--mut);font-size:13px;font-weight:600;margin-bottom:16px;transition:.2s}
+.back:hover{color:#fff}
+.vlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.vc{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.25s;position:relative}
+.vc:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--ma) 60%,transparent);box-shadow:0 30px 60px -30px color-mix(in srgb,var(--ma) 50%,transparent)}
+.vc .th{aspect-ratio:16/9;background:#000 center/cover;position:relative}
+.vc .th .play{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transition:.25s;background:rgba(0,0,0,.35)}
+.vc:hover .th .play{opacity:1}
+.vc .th .play i{width:64px;height:64px;border-radius:50%;background:var(--ma);display:grid;place-items:center;color:#000;box-shadow:0 10px 40px color-mix(in srgb,var(--ma) 60%,transparent)}
+.vc .th .play svg{width:26px;height:26px;margin-left:3px}
+.vc .prog{position:absolute;left:0;bottom:0;height:3px;background:var(--ma);z-index:2}
+.vc .in{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column;gap:8px}
+.vc .t{font-weight:700;font-size:15px;line-height:1.35}
+.vc .m{display:flex;gap:8px;flex-wrap:wrap;color:var(--mut);font-size:12px;align-items:center}
+.vc .note{color:var(--mut);font-size:13px;line-height:1.5;border-left:2px solid var(--ma);padding-left:10px;margin-top:2px}
+.vc .fav{position:absolute;top:10px;right:10px;z-index:3;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);display:grid;place-items:center;color:#fff;transition:.2s}
+.vc .fav:hover{transform:scale(1.1)}
+.vc .fav.on{color:#ff4d6d}
+.vc .fav svg{width:16px;height:16px}
+
+/* ============ PLAYER ============ */
+.watch{display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:start}
+.watch.theater{grid-template-columns:1fr}
+.player{position:relative;background:#000;border-radius:20px;overflow:hidden;aspect-ratio:16/9;border:1px solid var(--line);box-shadow:0 40px 100px -40px color-mix(in srgb,var(--ma) 50%,transparent);user-select:none;-webkit-user-select:none}
+.player.fake-fs{position:fixed;inset:0;z-index:90;border-radius:0;aspect-ratio:auto;height:100vh;height:100dvh}
+.player:fullscreen{border-radius:0}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
+.player .shield{position:absolute;inset:0;z-index:2}
+.player .big{position:absolute;inset:0;display:grid;place-items:center;z-index:3;pointer-events:none}
+.player .big i{width:86px;height:86px;border-radius:50%;background:color-mix(in srgb,var(--ma) 92%,#fff);display:grid;place-items:center;color:#000;box-shadow:0 20px 60px rgba(0,0,0,.6);transform:scale(.8);opacity:0;transition:.25s}
+.player.paused .big i{transform:scale(1);opacity:1}
+.player .big svg{width:36px;height:36px;margin-left:4px}
+.player .flash{position:absolute;top:50%;width:110px;height:110px;margin-top:-55px;border-radius:50%;background:rgba(255,255,255,.15);display:grid;place-items:center;z-index:3;opacity:0;pointer-events:none;font-weight:800;font-size:14px;flex-direction:column;gap:4px}
+.player .flash.l{left:12%}.player .flash.r{right:12%}
+.player .flash.go{animation:flash .5s}
+@keyframes flash{0%{opacity:0;transform:scale(.6)}30%{opacity:1}100%{opacity:0;transform:scale(1.1)}}
+.player .toast{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:4;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;opacity:0;transition:.25s;pointer-events:none}
+.player .toast.go{opacity:1}
+.rescue{position:absolute;top:14px;left:14px;right:14px;z-index:6;line-height:1.4;display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:13px}
+.rescue button,.rescue a{padding:7px 12px;border-radius:9px;background:var(--ma);color:#000;font-weight:700;font-size:12px}
+.rescue a{background:rgba(255,255,255,.1);color:#fff}
+.player.unlocked iframe{pointer-events:auto}.player.unlocked .shield,.player.unlocked .big,.player.unlocked .ctrls{display:none}
+.player .loader{position:absolute;inset:0;display:grid;place-items:center;z-index:1;background:#000}
+.player .loader i{width:46px;height:46px;border-radius:50%;border:3px solid rgba(255,255,255,.1);border-top-color:var(--ma);animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ctrls{position:absolute;left:0;right:0;bottom:0;z-index:5;padding:40px 14px 10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.85));opacity:1;transition:opacity .3s}
+.player.hidectl .ctrls{opacity:0;pointer-events:none}
+.player.hidectl{cursor:none}
+.seek{position:relative;height:18px;display:flex;align-items:center;cursor:pointer;margin-bottom:6px}
+.seek .track{position:relative;width:100%;height:4px;border-radius:4px;background:rgba(255,255,255,.2);transition:height .15s;overflow:visible}
+.seek:hover .track{height:6px}
+.seek .buf{position:absolute;left:0;top:0;bottom:0;background:rgba(255,255,255,.35);border-radius:4px;width:0}
+.seek .fill{position:absolute;left:0;top:0;bottom:0;background:var(--ma);border-radius:4px;width:0}
+.seek .knob{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;border:3px solid var(--ma);transform:scale(0);transition:transform .15s;left:0}
+.seek:hover .knob{transform:scale(1)}
+.seek .ab{position:absolute;top:-2px;bottom:-2px;background:rgba(255,255,255,.18);border-left:2px solid #fff;border-right:2px solid #fff;pointer-events:none}
+.seek .tip{position:absolute;bottom:22px;transform:translateX(-50%);background:rgba(0,0,0,.85);padding:4px 8px;border-radius:6px;font-size:12px;font-weight:700;opacity:0;pointer-events:none;white-space:nowrap}
+.seek:hover .tip{opacity:1}
+.cbar{display:flex;align-items:center;gap:4px}
+.cb{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;color:#fff;transition:.15s;position:relative;flex:none}
+.cb:hover{background:rgba(255,255,255,.14)}
+.cb svg{width:20px;height:20px}
+.cb.on{color:var(--ma)}
+.cb .lbl{position:absolute;bottom:2px;right:3px;font-size:9px;font-weight:800;font-family:var(--head)}
+.cb.txt{width:auto;padding:0 10px;font-weight:800;font-size:13px;font-family:var(--head)}
+.time{font-variant-numeric:tabular-nums;font-size:13px;font-weight:600;color:#ddd;padding:0 8px;white-space:nowrap}
+.time span{color:var(--mut)}
+.vol{display:flex;align-items:center;gap:2px}
+.vol input{width:0;opacity:0;transition:.25s;margin:0}
+.vol:hover input,.vol.open input{width:80px;opacity:1;margin:0 8px}
+.pop{position:absolute;bottom:48px;right:0;background:rgba(20,20,28,.95);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:14px;padding:8px;min-width:150px;display:none;z-index:9}
+.pop.open{display:grid;gap:2px}
+.pop button{text-align:left;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:600;display:flex;justify-content:space-between;gap:12px}
+.pop button:hover{background:rgba(255,255,255,.08)}
+.pop button.on{color:var(--ma)}
+.pop h6{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);padding:6px 12px 4px}
+.winfo{margin-top:18px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px 22px}
+.winfo h1{font-size:clamp(18px,2.4vw,26px);text-transform:none;letter-spacing:0;line-height:1.25;font-weight:800}
+.winfo .m{display:flex;gap:10px;flex-wrap:wrap;color:var(--mut);font-size:13px;margin-top:10px;align-items:center}
+.winfo .note{margin-top:14px;padding:14px 16px;border-radius:12px;background:color-mix(in srgb,var(--ma) 10%,transparent);border-left:3px solid var(--ma);font-size:14px;line-height:1.55}
+.winfo .acts{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.keys{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;color:var(--mut);font-size:12px}
+.keys kbd{background:rgba(255,255,255,.08);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:2px 7px;font-family:inherit;font-weight:700;color:#fff;margin-right:4px}
+.side{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;position:sticky;top:calc(80px + var(--safe-t))}
+.side h3{font-family:var(--head);font-size:11px;letter-spacing:.15em;text-transform:uppercase;padding:14px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.side h3 span{color:var(--ma)}
+.pl{display:grid;max-height:70vh;overflow:auto}
+.pli{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:10px 12px;border-bottom:1px solid var(--line);transition:.2s;position:relative}
+.pli:hover{background:rgba(255,255,255,.04)}
+.pli.on{background:color-mix(in srgb,var(--ma) 12%,transparent)}
+.pli.on::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--ma)}
+.pli .th{aspect-ratio:16/9;border-radius:8px;background:#000 center/cover;position:relative;overflow:hidden}
+.pli .t{font-size:13px;font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pli .m{font-size:11px;color:var(--mut);margin-top:4px}
+.autonext{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--mut);font-weight:600;letter-spacing:0;text-transform:none;font-family:var(--body);cursor:pointer}
+.autonext .sw{transform:scale(.8)}
+
+/* ============ FAV / EMPTY ============ */
+.empty{text-align:center;padding:70px 20px;color:var(--mut);border:1px dashed var(--line);border-radius:22px}
+.empty b{display:block;font-family:var(--head);font-size:20px;color:#fff;margin-bottom:8px}
+
+footer{position:relative;z-index:2;text-align:center;color:var(--mut);font-size:12px;padding:30px 18px calc(30px + var(--safe-b));border-top:1px solid var(--line);margin-top:40px}
+footer b{color:var(--ma)}
+
+/* ============ MOBILE ============ */
+@media (max-width:980px){
+  .watch{grid-template-columns:1fr}
+  .side{position:static}
+  .hero{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:640px){
+  .top{padding-left:12px;padding-right:12px;gap:8px}
+  .nav{display:none}
+  .mw-name,.mw input{display:none}.search{display:none}.install span{display:none}.install{padding:0 11px}
+  .msearch{display:flex;width:100%;margin-bottom:14px}
+  .logo span.lt{display:none}
+  main{padding:18px 12px calc(90px + var(--safe-b))}
+  .mapc{height:190px}
+  .mhead{padding:22px;min-height:230px;border-radius:22px}
+  .stats{gap:8px}.stat{padding:14px 12px}.stat b{font-size:24px}
+  .cb{width:32px;height:32px}.cbar{gap:0}.ctrls{padding:30px 8px 8px}#bTheater,#bQ{display:none}.cb.txt{padding:0 6px;font-size:12px}
+  .time{font-size:11px;padding:0 4px}
+  .vol input{display:none}
+  .keys{display:none}
+  .player{border-radius:12px}
+  .mpanel{right:10px;left:10px;width:auto}
+  /* нижняя навигация */
+  .bnav{position:fixed;left:12px;right:12px;bottom:calc(12px + var(--safe-b));z-index:55;display:flex;background:rgba(20,20,28,.9);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:18px;padding:6px}
+  .bnav a{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px;border-radius:12px;font-size:10px;font-weight:700;color:var(--mut)}
+  .bnav a.on{color:var(--ma);background:color-mix(in srgb,var(--ma) 12%,transparent)}
+  .bnav svg{width:20px;height:20px}
+}
+@media (min-width:641px){.bnav{display:none}}
+@media (max-width:640px){.kgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<!-- ======= ЗАСТАВКА ======= -->
+<div id="splash">
+  <canvas id="smoke"></canvas>
+  <div class="sp-in">
+    <div class="sp-kick">Counter-Strike 2 · Smokes · 2026</div>
+    <div class="sp-title" id="spTitle"></div>
+    <div class="sp-sub">Только свежие и проверенные раскидки на русском · 7 карт активного пула · встроенный плеер</div>
+    <button class="sp-btn" id="enter">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      Зайти
+    </button>
+    <div class="sp-music">
+      <label><span class="sw on" id="spMusicSw"></span> Включить релакс-музыку при входе</label>
+    </div>
+  </div>
+</div>
+
+<!-- ======= ШАПКА ======= -->
+<header class="top">
+  <a href="#/" class="logo">
+    <i><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18c0-4 3-5 5-7s1-5 3-7c0 3 3 4 3 8 0 2-1 3-1 5"/><circle cx="12" cy="18" r="3"/></svg></i>
+    <span class="lt">ДИМАРИК<small>SMOKES · CS2</small></span>
+  </a>
+  <nav class="nav">
+    <a href="#/" data-nav="home">Главная</a>
+    <a href="#/maps" data-nav="maps">Карты</a>
+    <a href="#/fav" data-nav="fav">Избранное</a>
+    <a href="#/train" data-nav="train">Тренировка</a>
+  </nav>
+  <div class="spacer"></div>
+  <form class="search" id="searchForm" autocomplete="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" placeholder="Поиск: карта, автор, смок…"><kbd>/</kbd></form>
+  <button class="install" id="installBtn" title="Установить приложение"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg><span>Установить</span></button>
+  <div class="mw" id="mw">
+    <button class="mw-btn" id="mwBtn" title="Музыка вкл/выкл">
+      <svg id="mwIcoPlay" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      <svg id="mwIcoPause" viewBox="0 0 24 24" fill="currentColor" class="hide"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+    </button>
+    <div class="mw-bars"><b></b><b></b><b></b><b></b></div>
+    <span class="mw-name" id="mwName">Релакс · Туман</span>
+    <input type="range" id="mwVol" min="0" max="100" value="45" title="Громкость музыки">
+    <button class="mw-more" id="mwMore" title="Настройки музыки"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></button>
+  </div>
+</header>
+
+<!-- ======= ПАНЕЛЬ МУЗЫКИ ======= -->
+<div class="mpanel" id="mpanel">
+  <h4>Релакс-музыка <button id="mpClose" style="color:var(--mut)">✕</button></h4>
+  <div class="mrow"><span>Воспроизведение</span><span class="sw" id="mpSw"></span></div>
+  <div class="mrow"><span>Громкость</span><input type="range" id="mpVol" min="0" max="100" value="45"></div>
+  <div class="mrow"><span>Приглушать, когда играет видео</span><span class="sw on" id="mpDuck"></span></div>
+  <div class="mrow" style="flex-direction:column;align-items:stretch;gap:8px"><span>Трек</span>
+    <div class="tracks" id="tracks"></div>
+  </div>
+  <a href="#/settings" class="btn" style="width:100%;justify-content:center;margin-top:10px;font-size:13px" onclick="document.getElementById('mpanel').classList.remove('open')">⚙ Настройки приложения</a>
+  <p style="font-size:11px;color:var(--mut);margin-top:10px;line-height:1.5">Музыка генерируется прямо в приложении (без авторских прав), поэтому работает офлайн и не грузит трафик.</p>
+</div>
+
+<div class="offline" id="offline">Нет сети — видео недоступны, приложение работает офлайн</div>
+<main id="app"></main>
+<div class="modal" id="keysModal"><div class="box"><h3>Горячие клавиши <button id="keysClose" style="color:var(--mut)">✕</button></h3>
+<div class="kgrid">
+<div><span>Пауза / играть</span><span><kbd>Пробел</kbd> <kbd>K</kbd></span></div><div><span>±5 секунд</span><span><kbd>←</kbd> <kbd>→</kbd></span></div>
+<div><span>±10 секунд</span><span><kbd>J</kbd> <kbd>L</kbd></span></div><div><span>Громкость</span><span><kbd>↑</kbd> <kbd>↓</kbd></span></div>
+<div><span>Без звука</span><kbd>M</kbd></div><div><span>Полный экран</span><kbd>F</kbd></div>
+<div><span>Широкий режим</span><kbd>T</kbd></div><div><span>Кадр назад / вперёд (на паузе)</span><span><kbd>,</kbd> <kbd>.</kbd></span></div>
+<div><span>Точка A, потом точка B</span><span><kbd>[</kbd> <kbd>]</kbd></span></div><div><span>Сброс A-B</span><kbd>\</kbd></div>
+<div><span>Скорость −/+</span><span><kbd>Shift+,</kbd> <kbd>Shift+.</kbd></span></div><div><span>Перейти к 0–90%</span><kbd>0–9</kbd></div>
+<div><span>Поиск</span><kbd>/</kbd></div><div><span>Эта подсказка</span><kbd>?</kbd></div>
+</div><p style="margin-top:14px;font-size:12px;color:var(--mut)">На телефоне: двойной тап слева/справа — ±10 с, по центру — полный экран.</p></div></div>
+
+<footer>Собрано с любовью · <b>Лучшие раскидки от Димарика</b> · Видео — авторов YouTube-каналов, встроены официальным плеером · Карты актуального пула CS2 на октябрь 2026</footer>
+
+<nav class="bnav">
+  <a href="#/" data-nav="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1z"/></svg>Главная</a>
+  <a href="#/maps" data-nav="maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3l-6 2v16l6-2 6 2 6-2V3l-6 2z"/><path d="M9 3v16M15 5v16"/></svg>Карты</a>
+  <a href="#/fav" data-nav="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>Избранное</a>
+  <a href="#/train" data-nav="train"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>Трениров.</a>
+  <a href="#" data-nav="music" id="bnavMusic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Музыка</a>
+</nav>
+
+<script src="data.js"></script>
+<script>
+/* =====================================================================
+   УТИЛИТЫ
+===================================================================== */
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const store={get(k,d){try{const v=localStorage.getItem('dm_'+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem('dm_'+k,JSON.stringify(v))}catch(e){}}};
+const fmt=s=>{s=Math.max(0,Math.floor(s||0));const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return (h?h+':':'')+(h?String(m).padStart(2,'0'):m)+':'+String(x).padStart(2,'0')};
+const thumb=id=>`https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ICONS={
+  play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
+  pause:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>',
+  heart:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 5 6.4 5c1.9 0 3.3 1 4.1 2.3L12 9l1.5-1.7C14.3 6 15.7 5 17.6 5 21 5 23.1 8.4 21.6 11.8 19.5 16.4 12 21 12 21z"/></svg>',
+  heartO:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 5 6.4 5c1.9 0 3.3 1 4.1 2.3L12 9l1.5-1.7C14.3 6 15.7 5 17.6 5 21 5 23.1 8.4 21.6 11.8 19.5 16.4 12 21 12 21z"/></svg>',
+  back:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>',
+  ext:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>',
+  fire:'<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 1-3s0 3 2 3c1 0 1-2 0-4-1-3 1-5 2-6z"/></svg>'
+};
+
+/* =====================================================================
+   АРТ КАРТ (уникальные SVG-паттерны под каждую карту)
+===================================================================== */
+function mapArt(m,big){
+  const {a,b}=m.theme, id='g'+m.id+(big?'b':'s');
+  const defs=`<defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${b}"/><stop offset="1" stop-color="#000"/></linearGradient><radialGradient id="${id}r"><stop offset="0" stop-color="${a}" stop-opacity=".9"/><stop offset="1" stop-color="${a}" stop-opacity="0"/></radialGradient></defs>`;
+  let body='';
+  switch(m.icon){
+    case 'dust': body=`<rect width="400" height="240" fill="url(#${id})"/><ellipse cx="320" cy="60" rx="120" ry="80" fill="url(#${id}r)" opacity=".5"/><path d="M0 170 Q80 130 160 165 T320 150 T400 170 V240 H0Z" fill="${a}" opacity=".25"/><path d="M0 195 Q100 160 200 190 T400 185 V240 H0Z" fill="${a}" opacity=".35"/><circle cx="320" cy="60" r="34" fill="${a}" opacity=".9"/><g stroke="${a}" stroke-width="1" opacity=".35">${[...Array(9)].map((_,i)=>`<line x1="${i*50}" y1="0" x2="${i*50-60}" y2="240"/>`).join('')}</g>`;break;
+    case 'mirage': body=`<rect width="400" height="240" fill="url(#${id})"/><g fill="none" stroke="${a}" stroke-width="1.2" opacity=".35">${[...Array(6)].map((_,r)=>[...Array(10)].map((_,c)=>`<path d="M${c*44-20+(r%2)*22} ${r*44-10} l22 22 l-22 22 l-22-22z"/>`).join('')).join('')}</g><ellipse cx="90" cy="200" rx="160" ry="90" fill="url(#${id}r)" opacity=".6"/><path d="M260 240 V120 a40 40 0 0 1 80 0 V240Z" fill="${b}" stroke="${a}" stroke-width="2"/><path d="M300 240 V150 a14 14 0 0 1 28 0 V240Z" fill="#000" opacity=".6"/>`;break;
+    case 'inferno': body=`<rect width="400" height="240" fill="url(#${id})"/><ellipse cx="200" cy="260" rx="260" ry="120" fill="url(#${id}r)" opacity=".8"/><g fill="${a}">${[...Array(28)].map((_,i)=>{const x=(i*37)%400,y=240-(i*53)%200,r=1+(i%3);return `<circle cx="${x}" cy="${y}" r="${r}" opacity="${.3+(i%5)/8}"/>`}).join('')}</g><path d="M0 240 C60 160 80 200 120 140 S200 130 220 90 S300 120 330 60 S380 110 400 80 V240Z" fill="${b}" opacity=".9"/><path d="M0 240 C70 200 90 220 140 180 S230 190 260 150 S340 180 400 140 V240Z" fill="#000" opacity=".5"/>`;break;
+    case 'nuke': body=`<rect width="400" height="240" fill="url(#${id})"/><g opacity=".8"><g transform="translate(300 90)"><circle r="60" fill="#000"/><circle r="56" fill="none" stroke="${a}" stroke-width="3"/>${[0,120,240].map(d=>`<path d="M0 0 L0 -50 A50 50 0 0 1 43 -25Z" fill="${a}" transform="rotate(${d})"/>`).join('')}<circle r="10" fill="#000"/><circle r="6" fill="${a}"/></g></g><g stroke="${a}" stroke-width="14" opacity=".35">${[...Array(10)].map((_,i)=>`<line x1="${i*40-80}" y1="240" x2="${i*40}" y2="160"/>`).join('')}</g><rect y="156" width="400" height="4" fill="${a}" opacity=".7"/>`;break;
+    case 'ancient': body=`<rect width="400" height="240" fill="url(#${id})"/><ellipse cx="60" cy="40" rx="140" ry="100" fill="url(#${id}r)" opacity=".45"/><g fill="none" stroke="${a}" stroke-width="2" opacity=".5"><path d="M200 240 L240 120 L280 240"/><path d="M160 240 L220 80 L290 240"/><path d="M120 240 L210 40 L300 240"/></g><g fill="${a}" opacity=".7"><path d="M20 240 C30 200 10 180 40 150 C50 190 70 200 60 240Z"/><path d="M350 240 C370 190 340 170 380 130 C390 180 400 200 400 240Z"/><path d="M80 240 C85 215 70 205 95 185 C100 210 110 220 105 240Z"/></g><g stroke="${a}" stroke-width="3" opacity=".5"><path d="M0 100 h40 v-20 h30 v20 h40"/><path d="M290 60 h30 v-20 h30 v20 h50"/></g>`;break;
+    case 'overpass': body=`<rect width="400" height="240" fill="url(#${id})"/><g fill="${a}" opacity=".12">${[...Array(12)].map((_,i)=>`<rect x="${i*36}" y="${100-(i*31)%80}" width="26" height="240"/>`).join('')}</g><path d="M0 130 Q200 40 400 130" stroke="${a}" stroke-width="10" fill="none" opacity=".9"/><path d="M0 150 Q200 60 400 150" stroke="${a}" stroke-width="3" fill="none" opacity=".4"/><g stroke="${a}" stroke-width="3" opacity=".6">${[...Array(9)].map((_,i)=>{const x=i*50;const y=130-Math.sin(Math.PI*x/400)*90+Math.sin(Math.PI*x/400)*0;return `<line x1="${x}" y1="${130-Math.sin(Math.PI*x/400)*88}" x2="${x}" y2="240"/>`}).join('')}</g><ellipse cx="330" cy="220" rx="140" ry="60" fill="url(#${id}r)" opacity=".5"/>`;break;
+    case 'anubis': body=`<rect width="400" height="240" fill="url(#${id})"/><circle cx="200" cy="110" r="60" fill="${a}" opacity=".9"/><circle cx="200" cy="110" r="78" fill="none" stroke="${a}" stroke-width="2" opacity=".5"/><path d="M60 240 L200 70 L340 240Z" fill="#000" opacity=".75"/><path d="M110 240 L200 130 L290 240Z" fill="${b}" opacity=".9"/><path d="M0 240 L80 150 L160 240Z" fill="#000" opacity=".5"/><path d="M240 240 L330 140 L400 240Z" fill="#000" opacity=".5"/><g stroke="${a}" stroke-width="2" opacity=".6"><path d="M20 30 h20 M30 20 v20"/><path d="M360 40 h20 M370 30 v20"/><path d="M330 20 l10 -10 l10 10 l-10 10z"/></g>`;break;
+  }
+  return `<svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice">${defs}${body}</svg>`;
+}
+
+/* =====================================================================
+   ТЕМА
+===================================================================== */
+const root=document.documentElement;
+function setTheme(m){
+  const t=m?m.theme:{a:'#b6ff3b',b:'#2a4d10',bg:'#0a0a0c'};
+  root.style.setProperty('--ma',t.a);root.style.setProperty('--mb',t.b);root.style.setProperty('--mbg',t.bg);
+  $('meta[name=theme-color]').setAttribute('content',t.bg);
+}
+
+/* =====================================================================
+   МУЗЫКА — процедурный эмбиент на Web Audio
+===================================================================== */
+const Music=(()=>{
+  const TRACKS=[
+    {id:'fog',name:'Туман',sub:'тёплые пэды · 60 bpm',root:220,prog:[[0,3,7,10],[-4,0,3,7],[-7,-3,0,4],[-5,-1,2,7]],wave:'triangle',cut:900,noise:.045,arp:false},
+    {id:'night',name:'Ночной Mirage',sub:'мягкий арпеджио · минор',root:196,prog:[[0,3,7,12],[-2,2,5,9],[-5,-1,2,7],[-7,-3,0,3]],wave:'sine',cut:1400,noise:.03,arp:true},
+    {id:'deep',name:'Глубина',sub:'низкий дрон · дыхание',root:110,prog:[[0,7,12,19],[0,5,12,17],[-2,5,10,17],[0,7,14,19]],wave:'sawtooth',cut:420,noise:.06,arp:false}
+  ];
+  let ctx,master,duckG,comp,rev,filt,noiseSrc,voices=[],timer,arpTimer,playing=false,cur=store.get('track','fog'),vol=store.get('vol',45),duck=store.get('duck',true),ducked=false;
+  function init(){
+    if(ctx)return;
+    ctx=new (window.AudioContext||window.webkitAudioContext)();
+    master=ctx.createGain();duckG=ctx.createGain();comp=ctx.createDynamicsCompressor();filt=ctx.createBiquadFilter();filt.type='lowpass';filt.Q.value=.7;
+    rev=ctx.createConvolver();rev.buffer=impulse(4.2,2.6);const wet=ctx.createGain();wet.gain.value=.55;const dry=ctx.createGain();dry.gain.value=.7;
+    filt.connect(dry);filt.connect(rev);rev.connect(wet);dry.connect(comp);wet.connect(comp);comp.connect(duckG);duckG.connect(master);master.connect(ctx.destination);
+    master.gain.value=0;
+    const lfo=ctx.createOscillator(),lg=ctx.createGain();lfo.frequency.value=.06;lg.gain.value=180;lfo.connect(lg);lg.connect(filt.frequency);lfo.start();
+  }
+  function impulse(sec,decay){const r=ctx.sampleRate,len=r*sec,b=ctx.createBuffer(2,len,r);for(let c=0;c<2;c++){const d=b.getChannelData(c);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,decay)}return b}
+  function noise(level){const len=ctx.sampleRate*4,b=ctx.createBuffer(1,len,ctx.sampleRate),d=b.getChannelData(0);let l=0;for(let i=0;i<len;i++){const w=Math.random()*2-1;l=(l+.02*w)/1.02;d[i]=l*3.5}const s=ctx.createBufferSource();s.buffer=b;s.loop=true;const f=ctx.createBiquadFilter();f.type='bandpass';f.frequency.value=500;f.Q.value=.4;const g=ctx.createGain();g.gain.value=level;s.connect(f);f.connect(g);g.connect(filt);s.start();return s}
+  const T=()=>TRACKS.find(t=>t.id===cur)||TRACKS[0];
+  let step=0;
+  function chord(){
+    const t=T(),notes=t.prog[step%t.prog.length],now=ctx.currentTime,len=9;
+    notes.forEach((n,i)=>{
+      const f=t.root*Math.pow(2,n/12);
+      [-6,6].forEach(det=>{
+        const o=ctx.createOscillator(),g=ctx.createGain();o.type=t.wave;o.frequency.value=f;o.detune.value=det;
+        g.gain.setValueAtTime(0,now);g.gain.linearRampToValueAtTime(.055/(1+i*.25),now+3);g.gain.setValueAtTime(.055/(1+i*.25),now+len-3.5);g.gain.linearRampToValueAtTime(0,now+len);
+        o.connect(g);g.connect(filt);o.start(now);o.stop(now+len+.1);voices.push(o);
+      });
+    });
+    if(t.arp){clearInterval(arpTimer);let k=0;arpTimer=setInterval(()=>{if(!playing)return;const n=notes[k%notes.length]+12,f=t.root*Math.pow(2,n/12),o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=f;const a=ctx.currentTime;g.gain.setValueAtTime(0,a);g.gain.linearRampToValueAtTime(.05,a+.05);g.gain.exponentialRampToValueAtTime(.0001,a+1.6);o.connect(g);g.connect(filt);o.start(a);o.stop(a+1.7);k++},750)}
+    step++;
+  }
+  function start(){
+    init();if(ctx.state==='suspended')ctx.resume();
+    if(playing)return;playing=true;
+    const t=T();filt.frequency.value=t.cut;
+    noiseSrc=noise(t.noise);
+    chord();timer=setInterval(chord,8500);
+    master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setValueAtTime(master.gain.value,ctx.currentTime);master.gain.linearRampToValueAtTime(vol/100,ctx.currentTime+2);
+    ui();
+  }
+  function stop(){
+    if(!playing)return;playing=false;clearInterval(timer);clearInterval(arpTimer);
+    master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setValueAtTime(master.gain.value,ctx.currentTime);master.gain.linearRampToValueAtTime(0,ctx.currentTime+1.2);
+    setTimeout(()=>{if(!playing){try{noiseSrc&&noiseSrc.stop()}catch(e){}voices.forEach(v=>{try{v.stop()}catch(e){}});voices=[]}},1300);
+    ui();
+  }
+  function toggle(){playing?stop():start()}
+  function setVol(v){vol=v;store.set('vol',v);if(ctx&&playing){master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setValueAtTime(master.gain.value,ctx.currentTime);master.gain.linearRampToValueAtTime(v/100,ctx.currentTime+.15)}ui()}
+  function setTrack(id){cur=id;store.set('track',id);step=0;if(playing){stop();setTimeout(start,1350)}ui()}
+  function setDuck(on){duck=on;store.set('duck',on);applyDuck()}
+  function videoPlaying(on){ducked=on;applyDuck()}
+  function applyDuck(){if(!ctx)return;const g=(duck&&ducked)?.22:1;duckG.gain.cancelScheduledValues(ctx.currentTime);duckG.gain.setValueAtTime(duckG.gain.value,ctx.currentTime);duckG.gain.linearRampToValueAtTime(g,ctx.currentTime+.8)}
+  function ui(){
+    $('#mw').classList.toggle('playing',playing);$('#mwIcoPlay').classList.toggle('hide',playing);$('#mwIcoPause').classList.toggle('hide',!playing);
+    $('#mpSw').classList.toggle('on',playing);$('#mpDuck').classList.toggle('on',duck);
+    $('#mwName').textContent='Релакс · '+T().name;
+    ['#mwVol','#mpVol'].forEach(s=>{const e=$(s);e.value=vol;e.style.setProperty('--p',vol+'%')});
+    $('#tracks').innerHTML=TRACKS.map(t=>`<button data-t="${t.id}" class="${t.id===cur?'on':''}"><span>${t.name}<br><small>${t.sub}</small></span>${t.id===cur&&playing?'<span>▶</span>':''}</button>`).join('');
+  }
+  return {start,stop,toggle,setVol,setTrack,setDuck,videoPlaying,ui,get playing(){return playing},get duck(){return duck}};
+})();
+// привязки музыкального UI
+$('#mwBtn').onclick=()=>Music.toggle();$('#mpSw').onclick=()=>Music.toggle();
+$('#mwVol').oninput=e=>Music.setVol(+e.target.value);$('#mpVol').oninput=e=>Music.setVol(+e.target.value);
+$('#mpDuck').onclick=()=>Music.setDuck(!Music.duck);
+$('#tracks').onclick=e=>{const b=e.target.closest('[data-t]');if(b)Music.setTrack(b.dataset.t)};
+const togglePanel=f=>$('#mpanel').classList.toggle('open',f);
+$('#mwMore').onclick=()=>togglePanel();$('#mpClose').onclick=()=>togglePanel(false);
+$('#bnavMusic').onclick=e=>{e.preventDefault();togglePanel()};
+document.addEventListener('click',e=>{if(!e.target.closest('#mpanel,#mwMore,#bnavMusic'))togglePanel(false)});
+Music.ui();
+
+/* ---------- поиск / установка / офлайн / клавиши ---------- */
+$('#searchForm').onsubmit=e=>{e.preventDefault();const q=$('#q').value.trim();if(q)location.hash='#/search/'+encodeURIComponent(q)};
+document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea'))return;
+  if(e.key==='/'){e.preventDefault();($('.msearch input')||$('#q')).focus()}
+  if(e.key==='?'){e.preventDefault();$('#keysModal').classList.toggle('open')}
+  if(e.key==='Escape')$('#keysModal').classList.remove('open')});
+$('#keysClose').onclick=()=>$('#keysModal').classList.remove('open');
+$('#keysModal').onclick=e=>{if(e.target.id==='keysModal')e.target.classList.remove('open')};
+let deferredInstall=null;
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;$('#installBtn').classList.add('show')});
+$('#installBtn').onclick=async()=>{if(!deferredInstall)return;deferredInstall.prompt();await deferredInstall.userChoice;deferredInstall=null;$('#installBtn').classList.remove('show')};
+addEventListener('appinstalled',()=>$('#installBtn').classList.remove('show'));
+const netUI=()=>$('#offline').classList.toggle('show',!navigator.onLine);addEventListener('online',netUI);addEventListener('offline',netUI);netUI();
+
+/* =====================================================================
+   ЗАСТАВКА
+===================================================================== */
+(function splash(){
+  const title='Лучшие раскидки которые есть от Димарика'.split(' ');
+  $('#spTitle').innerHTML=title.map((w,wi)=>`<b class="w ${w==='Димарика'?'hl':''}">${[...w].map((ch,i)=>`<span class="ch" style="animation-delay:${.5+(wi*6+i)*.035}s">${ch}</span>`).join('')}</b>`).join('');
+  // дым на канвасе
+  const c=$('#smoke'),x=c.getContext('2d');let W,H,P=[];
+  const rs=()=>{W=c.width=innerWidth*devicePixelRatio;H=c.height=innerHeight*devicePixelRatio};rs();addEventListener('resize',rs);
+  for(let i=0;i<40;i++)P.push({x:Math.random(),y:Math.random(),r:.08+Math.random()*.18,vx:(Math.random()-.5)*.0006,vy:-.0003-Math.random()*.0005,a:.05+Math.random()*.1,h:70+Math.random()*60});
+  let raf;(function loop(){x.clearRect(0,0,W,H);x.globalCompositeOperation='lighter';P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.y<-.3){p.y=1.3;p.x=Math.random()}const g=x.createRadialGradient(p.x*W,p.y*H,0,p.x*W,p.y*H,p.r*W);g.addColorStop(0,`hsla(${p.h},70%,60%,${p.a})`);g.addColorStop(1,'transparent');x.fillStyle=g;x.beginPath();x.arc(p.x*W,p.y*H,p.r*W,0,7);x.fill()});raf=requestAnimationFrame(loop)})();
+  const sw=$('#spMusicSw');sw.onclick=()=>sw.classList.toggle('on');
+  $('#enter').onclick=()=>{if(sw.classList.contains('on'))Music.start();$('#splash').classList.add('out');setTimeout(()=>cancelAnimationFrame(raf),1000)};
+})();
+
+/* =====================================================================
+   ДАННЫЕ / ИЗБРАННОЕ / ПРОГРЕСС
+===================================================================== */
+MAPS.forEach(m=>m.videos.forEach(v=>{v.yt=v.id.startsWith('rt_')?null:v.id}));
+const ALL=MAPS.flatMap(m=>m.videos.map(v=>({...v,map:m})));
+const rtThumb=v=>v.yt?thumb(v.yt):null;
+const thumbStyle=v=>v.yt?`style="background-image:url('${thumb(v.yt)}')"`:'';
+const thumbInner=v=>v.yt?'':'<span class="lg">RUTUBE</span>';
+const srcBadge=v=>v.rt?`<span class="badge rt">▶ RuTube · без VPN</span>`:`<span class="badge ytonly">YouTube</span>`;
+const Fav={list:()=>store.get('fav',[]),has:id=>store.get('fav',[]).includes(id),toggle(id){const l=store.get('fav',[]);const i=l.indexOf(id);i<0?l.push(id):l.splice(i,1);store.set('fav',l);return i<0}};
+const Learn={all:()=>store.get('learn',{}),has:k=>!!store.get('learn',{})[k],toggle(k){const o=store.get('learn',{});o[k]?delete o[k]:o[k]=1;store.set('learn',o);return !!o[k]},
+  mapPct(id){const l=SMOKES[id]||[];if(!l.length)return 0;const o=store.get('learn',{});return l.filter((_,i)=>o[id+':'+i]).length/l.length},
+  total(){const all=Object.values(SMOKES).flat().length;const o=store.get('learn',{});return [Object.keys(o).length,all]}};
+function ring(p,size){const r=34,c=2*Math.PI*r;return `<div class="ring" ${size?`style="width:${size}px;height:${size}px"`:''}><svg viewBox="0 0 88 88"><circle class="bg" cx="44" cy="44" r="${r}"/><circle class="fg" cx="44" cy="44" r="${r}" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-p)}"/></svg><b>${Math.round(p*100)}%</b></div>`}
+const Prog={get:id=>store.get('prog',{})[id]||0,set(id,p){const o=store.get('prog',{});o[id]=p;store.set('prog',o);const l=store.get('last',{});l[id]=Date.now();store.set('last',l)}};
+
+/* =====================================================================
+   РОУТЕР
+===================================================================== */
+const app=$('#app');let Player=null;
+function route(){
+  if(Player){Player.destroy();Player=null}
+  const h=location.hash.replace(/^#\/?/,'').split('/');
+  $$('[data-nav]').forEach(a=>a.classList.toggle('on',a.dataset.nav===(h[0]||'home')));
+  scrollTo({top:0});document.activeElement&&document.activeElement.blur&&document.activeElement.blur();if(h[0]!=='search')$('#q').value='';
+  if(h[0]==='map'&&MAPS.find(m=>m.id===h[1]))return viewMap(MAPS.find(m=>m.id===h[1]));
+  if(h[0]==='watch'){const m=MAPS.find(m=>m.id===h[1]),v=m&&m.videos.find(v=>v.id===h[2]);if(v)return viewWatch(m,v)}
+  if(h[0]==='fav')return viewFav();
+  if(h[0]==='train')return viewTrain(h[1]||'mirage');
+  if(h[0]==='settings')return viewSettings();
+  if(h[0]==='search')return viewSearch(decodeURIComponent(h.slice(1).join('/')||''));
+  if(h[0]==='maps')return viewMaps();
+  viewHome();
+}
+addEventListener('hashchange',route);
+
+/* ---------- Карточка видео ---------- */
+function videoCard(v,m,showMap){
+  const p=Prog.get(v.id);
+  return `<article class="vc" style="--ca:${m.theme.a}">
+    <button class="fav ${Fav.has(v.id)?'on':''}" data-fav="${v.id}" title="В избранное">${Fav.has(v.id)?ICONS.heart:ICONS.heartO}</button>
+    <a href="#/watch/${m.id}/${v.id}" class="th ${v.yt?'':'rtph'}" ${thumbStyle(v)}>${thumbInner(v)}
+      ${showMap?`<span class="badge map">${m.name}</span>`:''}
+      <span class="dur">${v.dur}</span>
+      <span class="play"><i>${ICONS.play}</i></span>
+      ${p>0&&p<.97?`<span class="prog" style="width:${p*100}%"></span>`:''}
+    </a>
+    <div class="in">
+      <a href="#/watch/${m.id}/${v.id}" class="t">${esc(v.title)}</a>
+      <div class="m">${v.hot?`<span class="badge hot">${ICONS.fire} Топ выбор</span>`:''}${srcBadge(v)}<span>${esc(v.author)}</span>·<span>${v.fresh} назад</span>${v.views!=='—'?`·<span>${v.views} просм.</span>`:''}</div>
+      <div class="note">${esc(v.note)}</div>
+    </div>
+  </article>`;
+}
+app.addEventListener('click',e=>{
+  const f=e.target.closest('[data-fav]');if(!f)return;e.preventDefault();
+  const on=Fav.toggle(f.dataset.fav);f.classList.toggle('on',on);f.innerHTML=on?ICONS.heart:ICONS.heartO;
+  if(location.hash.startsWith('#/fav')&&!on)route();
+});
+
+/* ---------- Главная ---------- */
+function viewHome(){
+  setTheme(null);
+  const fresh=[...ALL].sort((a,b)=>parseFresh(a.fresh)-parseFresh(b.fresh)).slice(0,8);
+  app.innerHTML=`<div class="view">
+    <section class="hero">
+      <div>
+        <div class="kick">Актуальный пул · Октябрь 2026</div>
+        <h1>Раскидки<br>дымов <em>CS2</em><br>без воды</h1>
+        <p>Собрал только свежие русскоязычные гайды по каждой карте активного пула, проверил каждое видео и упаковал во встроенный плеер с A-B повтором, скоростью и горячими клавишами. Учи смоки — побеждай раунды.</p>
+        <div class="hero-acts"><a href="#/maps" class="btn pri">${ICONS.play} Выбрать карту</a><a href="#/watch/${fresh[0].map.id}/${fresh[0].id}" class="btn">Самое свежее</a><a href="#/train" class="btn">🎯 Тренировка</a></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>${MAPS.length}</b><span>карт активного пула</span></div>
+        <div class="stat"><b>${ALL.length}</b><span>видео · ${ALL.filter(v=>v.rt).length} без VPN</span></div>
+        <div class="stat"><b>${(()=>{const [a,b]=Learn.total();return a?Math.round(a/b*100)+'%':b})()}</b><span>${Learn.total()[0]?'смоков выучено':'смоков в чек-листе'}</span></div>
+      </div>
+    </section>
+    <form class="search msearch" onsubmit="event.preventDefault();const q=this.q.value.trim();if(q)location.hash='#/search/'+encodeURIComponent(q)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input name="q" placeholder="Поиск: карта, автор, смок…"></form>
+    ${continueRow()}
+    <div class="ticker"><div>${(MAPS.map(m=>`<span>${m.name} — ${m.tag}</span>`).join('')).repeat(2)}</div></div>
+    <h2>Карты</h2>
+    <div class="maps">${MAPS.map((m,i)=>mapCard(m,i)).join('')}</div>
+    <h2>Самые свежие</h2>
+    <div class="fresh">${fresh.map(v=>`<a href="#/watch/${v.map.id}/${v.id}" class="fc" style="--ca:${v.map.theme.a}"><div class="th ${v.yt?'':'rtph'}" ${thumbStyle(v)}>${thumbInner(v)}<span class="badge map">${v.map.name}</span><span class="dur">${v.dur}</span></div><div class="in"><div class="t">${esc(v.title)}</div><div class="m">${esc(v.author)} · ${v.fresh} назад</div></div></a>`).join('')}</div>
+  </div>`;
+}
+function continueRow(){
+  const pr=store.get('prog',{});const items=ALL.filter(v=>pr[v.id]>.02&&pr[v.id]<.97).sort((a,b)=>(store.get('last',{})[b.id]||0)-(store.get('last',{})[a.id]||0)).slice(0,8);
+  if(!items.length)return '';
+  return `<h2>Продолжить просмотр</h2><div class="cont">${items.map(v=>{const p=pr[v.id];const [mm,ss]=v.dur.split(':').map(Number);const tot=v.dur.split(':').length===3?(+v.dur.split(':')[0]*3600+ +v.dur.split(':')[1]*60+ +v.dur.split(':')[2]):mm*60+ss;const left=Math.max(0,Math.round(tot*(1-p)));
+    return `<a href="#/watch/${v.map.id}/${v.id}" class="fc" style="--ca:${v.map.theme.a}"><div class="th ${v.yt?'':'rtph'}" ${thumbStyle(v)}>${thumbInner(v)}<span class="badge map">${v.map.name}</span><span class="left">осталось ${fmt(left)}</span><span class="bar" style="width:${p*100}%"></span></div><div class="in"><div class="t">${esc(v.title)}</div><div class="m">${esc(v.author)}</div></div></a>`}).join('')}</div>`;
+}
+function viewSearch(q){
+  setTheme(null);const ql=q.toLowerCase().split(/\s+/).filter(Boolean);
+  const norm=v=>[v.title,v.author,v.note,v.map.name,v.map.ru,v.map.tag,v.rt?'rutube рутуб без vpn':'youtube'].join(' ').toLowerCase();
+  const items=ql.length?ALL.filter(v=>ql.every(w=>norm(v).includes(w))):[];
+  const maps=MAPS.filter(m=>ql.some(w=>(m.name+' '+m.ru).toLowerCase().includes(w)));
+  $('#q').value=q;
+  app.innerHTML=`<div class="view"><div class="kick">Поиск</div><h1 style="font-size:clamp(26px,4vw,48px);margin:10px 0 6px;text-transform:none">«${esc(q)}»</h1><p style="color:var(--mut);margin-bottom:22px">${items.length?`Найдено видео: ${items.length}`:'Ничего не нашлось — попробуй «мираж», «инста», «chopper», «инферно»'}</p>
+  ${maps.length?`<h2>Карты</h2><div class="maps">${maps.map((m,i)=>mapCard(m,MAPS.indexOf(m))).join('')}</div>`:''}
+  ${items.length?`<h2>Видео</h2><div class="vlist">${items.map(v=>videoCard(v,v.map,true)).join('')}</div>`:''}</div>`;
+}
+/* ---------- Тренировка ---------- */
+const MAPFILE={dust2:'de_dust2',mirage:'de_mirage',inferno:'de_inferno',nuke:'de_nuke',ancient:'de_ancient',overpass:'de_overpass',anubis:'de_anubis'};
+const PRACTICE_CFG=`sv_cheats 1
+mp_limitteams 0
+mp_autoteambalance 0
+mp_roundtime 60
+mp_roundtime_defuse 60
+mp_maxmoney 60000
+mp_startmoney 60000
+mp_freezetime 0
+mp_buytime 9999
+mp_buy_anywhere 1
+sv_infinite_ammo 1
+ammo_grenade_limit_total 5
+sv_grenade_trajectory_prime 1
+sv_grenade_trajectory_time_spectator 8
+sv_showimpacts 1
+sv_showimpacts_time 10
+mp_warmup_end
+bot_kick
+mp_restartgame 1`;
+const JT_BIND=`alias "+jt" "+jump;-attack;-attack2"
+alias "-jt" "-jump"
+bind "v" "+jt"`;
+const RUNJT_BIND=`alias "+rjt" "+forward;+jump;-attack;-attack2"
+alias "-rjt" "-jump;-forward"
+bind "n" "+rjt"`;
+const UTIL_BINDS=`bind "mouse4" "noclip"
+bind "x" "sv_rethrow_last_grenade"
+bind "c" "slot8"
+bind "4" "slot7"
+bind "f" "slot10"`;
+function codeBlock(title,sub,code,id){return `<div class="code"><header><div>${title}<small>${sub}</small></div><button class="copy" data-copy="${id}">Копировать</button></header><pre id="${id}">${esc(code).replace(/^(\w+)/gm,'<b>$1</b>')}</pre></div>`}
+function viewTrain(mid){
+  const m=MAPS.find(x=>x.id===mid)||MAPS[1];setTheme(m);
+  const mapCmd=`map ${MAPFILE[m.id]}`;
+  app.innerHTML=`<div class="view">
+    <div class="kick">Практика · консольные команды</div>
+    <h1 style="font-size:clamp(28px,5vw,60px);margin:10px 0 6px">Тренировка<br><span style="color:var(--ma)">${m.name}</span></h1>
+    <p style="color:var(--mut);max-width:640px;line-height:1.6">Посмотрел видео — сразу иди закреплять. Ниже всё, что нужно: конфиг с траекторией гранат и бесконечными патронами, бинды на джампсроу и повтор последнего броска.</p>
+    <div class="mapsel">${MAPS.map(x=>`<a href="#/train/${x.id}" class="${x.id===m.id?'on':''}">${x.name}</a>`).join('')}</div>
+    <div class="steps">
+      <div>Включи консоль: <b>Настройки → Игра → Включить консоль разработчика → Да</b>. Открывается клавишей <code>~</code>.</div>
+      <div>Загрузи карту одной командой — просто скопируй и вставь в консоль: <code>${mapCmd}</code> <button class="copy" data-copy-text="${mapCmd}" style="margin-left:8px">Копировать</button></div>
+      <div>Вставь конфиг практики (блок ниже). После этого увидишь траекторию каждой гранаты и точку приземления, патроны и гранаты бесконечные.</div>
+      <div>Открой нужное видео из раздела <a href="#/map/${m.id}" style="color:var(--ma);font-weight:700">${m.name}</a> на втором экране или телефоне, включи <b>A-B повтор</b> на броске и повторяй до автоматизма.</div>
+    </div>
+    <h2>Команды</h2>
+    <div class="tr-grid">
+      ${codeBlock('Конфиг практики','Вставь целиком в консоль после загрузки карты',PRACTICE_CFG,'cfgPractice')}
+      <div style="display:grid;gap:16px">
+        ${codeBlock('Jumpthrow','Клавиша V — прыжок + бросок в один кадр',JT_BIND,'cfgJt')}
+        ${codeBlock('Run-jumpthrow (W + прыжок + бросок)','Клавиша N — для дальних дымов с разбега',RUNJT_BIND,'cfgRjt')}
+        ${codeBlock('Полезные бинды','Noclip на боковую кнопку мыши, повтор последней гранаты на X',UTIL_BINDS,'cfgUtil')}
+      </div>
+    </div>
+    <h2>Советы</h2>
+    <div class="steps" style="counter-reset:st">
+      <div><b>sv_rethrow_last_grenade</b> — переброс последней гранаты с той же точки и прицела: удобно проверять, попал ли смок, не бегая назад.</div>
+      <div><b>noclip</b> — летай по карте, чтобы посмотреть сверху, куда лёг дым и какие углы он закрывает.</div>
+      <div>В CS2 все смоки одинаковы на любом тикрейте — то, что ты выучил в тренировке, точно так же полетит в матчмейкинге, Premier и FACEIT.</div>
+      <div>Учи по 3–4 дыма за подход и сразу используй их в игре — так запоминается в разы быстрее, чем зубрить все 20 подряд.</div>
+    </div>
+  </div>`;
+}
+app.addEventListener('click',async e=>{
+  const b=e.target.closest('[data-copy],[data-copy-text]');if(!b)return;
+  const text=b.dataset.copyText||$('#'+b.dataset.copy).innerText;
+  try{await navigator.clipboard.writeText(text)}catch(err){const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}
+  const o=b.textContent;b.textContent='Скопировано ✓';b.classList.add('done');setTimeout(()=>{b.textContent=o;b.classList.remove('done')},1500);
+});
+/* ---------- Настройки ---------- */
+function viewSettings(){
+  setTheme(null);
+  const sw=(id,on)=>`<span class="sw ${on?'on':''}" id="${id}"></span>`;
+  app.innerHTML=`<div class="view"><div class="kick">Приложение</div><h1 style="font-size:clamp(28px,5vw,56px);margin:10px 0 24px">Настройки</h1>
+  <div style="max-width:640px">
+    <div class="setrow"><div>Автоплей следующего видео<small>После окончания ролика включать следующий из плейлиста карты</small></div>${sw('sAuto',store.get('autonext',true))}</div>
+    <div class="setrow"><div>Широкий режим плеера по умолчанию<small>Плейлист уходит вниз, видео на всю ширину</small></div>${sw('sTheater',store.get('theater',false))}</div>
+    <div class="setrow"><div>Приглушать музыку при видео<small>Фоновая музыка становится тише, пока идёт ролик</small></div>${sw('sDuck',Music.duck)}</div>
+    <div class="setrow"><div>Источник видео по умолчанию<small>RuTube работает в России без VPN; YouTube даёт полное управление (A-B, скорость)</small></div><div class="src" style="margin:0">${['auto','rt','yt'].map(k=>`<button data-pref="${k}" class="${store.get('src','auto')===k?'on':''}">${{auto:'Авто',rt:'RuTube',yt:'YouTube'}[k]}</button>`).join('')}</div></div>
+    <div class="setrow"><div>Разблокированный плеер YouTube<small>Включено: родные кнопки YouTube, видео стартует сразу. Выключено: свой плеер с A-B повтором и скоростью</small></div><span class="sw ${store.get('native',true)?'on':''}" id="sNative"></span></div>
+    <div class="setrow"><div>Прогресс просмотра<small>Запомнено позиций: ${Object.keys(store.get('prog',{})).length}</small></div><button class="btn danger" id="sProg">Сбросить</button></div>
+    <div class="setrow"><div>Избранное<small>Сохранено видео: ${Fav.list().length}</small></div><button class="btn danger" id="sFav">Очистить</button></div>
+    <div class="setrow"><div>Показать заставку снова<small>«Лучшие раскидки которые есть от Димарика»</small></div><button class="btn" id="sSplash">Показать</button></div>
+    <div class="setrow io" style="flex-direction:column;align-items:stretch"><div>Перенос данных<small>Избранное, прогресс просмотра и чек-листы — одной строкой. Скопируй на телефоне, вставь на ПК (или наоборот).</small></div>
+      <textarea id="ioBox" placeholder="Сюда вставь код с другого устройства…"></textarea>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn pri" id="ioExport">Сформировать код</button><button class="btn" id="ioCopy">Копировать</button><button class="btn" id="ioImport">Импортировать</button></div></div>
+    <div class="setrow" style="border:0"><div>О приложении<small>Димарик Smokes · версия 1.2 · ${ALL.length} видео · ${MAPS.length} карт · пул CS2 на октябрь 2026</small></div></div>
+  </div></div>`;
+  $$('[data-pref]').forEach(b=>b.onclick=()=>{store.set('src',b.dataset.pref);store.set('ytBroken',false);$$('[data-pref]').forEach(x=>x.classList.toggle('on',x===b))});
+  $('#sNative').onclick=e=>{const v=!store.get('native',true);store.set('native',v);e.target.classList.toggle('on',v)};
+  $('#sAuto').onclick=e=>{const on=!store.get('autonext',true);store.set('autonext',on);e.target.classList.toggle('on',on)};
+  $('#sTheater').onclick=e=>{const on=!store.get('theater',false);store.set('theater',on);e.target.classList.toggle('on',on)};
+  $('#sDuck').onclick=e=>{Music.setDuck(!Music.duck);e.target.classList.toggle('on',Music.duck)};
+  $('#sProg').onclick=()=>{if(confirm('Сбросить весь прогресс просмотра?')){store.set('prog',{});store.set('last',{});viewSettings()}};
+  $('#sFav').onclick=()=>{if(confirm('Очистить избранное?')){store.set('fav',[]);viewSettings()}};
+  $('#sSplash').onclick=()=>{$('#splash').classList.remove('out')};
+  const pack=()=>{const d={fav:store.get('fav',[]),prog:store.get('prog',{}),last:store.get('last',{}),learn:store.get('learn',{}),vol:store.get('vol',45),track:store.get('track','fog')};return 'DM1.'+btoa(unescape(encodeURIComponent(JSON.stringify(d))))};
+  $('#ioExport').onclick=()=>{$('#ioBox').value=pack()};
+  $('#ioCopy').onclick=async e=>{if(!$('#ioBox').value)$('#ioBox').value=pack();try{await navigator.clipboard.writeText($('#ioBox').value);e.target.textContent='Скопировано ✓'}catch(err){$('#ioBox').select()}};
+  $('#ioImport').onclick=()=>{const v=$('#ioBox').value.trim();if(!v.startsWith('DM1.')){alert('Это не похоже на код переноса');return}
+    try{const d=JSON.parse(decodeURIComponent(escape(atob(v.slice(4)))));
+      const merge=(k,isArr)=>{if(isArr){store.set(k,[...new Set([...(store.get(k,[])),...(d[k]||[])])])}else{store.set(k,{...store.get(k,{}),...(d[k]||{})})}};
+      merge('fav',true);merge('prog');merge('last');merge('learn');if(d.vol!=null)store.set('vol',d.vol);if(d.track)store.set('track',d.track);
+      alert('Данные импортированы и объединены с текущими');viewSettings()}catch(e){alert('Не удалось прочитать код')}};
+}
+function parseFresh(s){const n=parseInt(s);return s.includes('г')?n*12:n}
+function mapCard(m,i){return `<a href="#/map/${m.id}" class="mapc" style="--ca:${m.theme.a};--mbgc:${m.theme.bg}"><div class="art">${mapArt(m)}</div><div class="grad"></div><span class="num">0${i+1}</span><span class="n">${m.videos.length} видео</span>${Learn.mapPct(m.id)>0?`<div class="mp">${ring(Learn.mapPct(m.id),46)}</div>`:''}<div class="in"><div class="t">${m.name}</div><div class="s">${m.tag}</div></div></a>`}
+function viewMaps(){setTheme(null);app.innerHTML=`<div class="view"><div class="kick">Все карты</div><h1 style="font-size:clamp(30px,5vw,56px);margin:10px 0 24px">Выбери карту</h1><div class="maps">${MAPS.map((m,i)=>mapCard(m,i)).join('')}</div></div>`}
+
+/* ---------- Страница карты ---------- */
+function viewMap(m){
+  setTheme(m);
+  app.innerHTML=`<div class="view">
+    <a href="#/" class="back">${ICONS.back} Все карты</a>
+    <section class="mhead"><div class="art">${mapArt(m,1)}</div><div class="grad"></div>
+      <div><h1><small>${m.tag}</small>${m.name}</h1><p>${esc(m.desc)}</p>
+      <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap"><a href="#/watch/${m.id}/${m.videos[0].id}" class="btn pri">${ICONS.play} Смотреть первое</a><a href="#/train/${m.id}" class="btn">🎯 Тренировать на ${m.name}</a><span class="btn" style="cursor:default">${m.videos.length} видео · ${m.videos.filter(v=>v.hot).length} топ-выбор</span></div></div>
+    </section>
+    <h2>Видео по ${m.ru}<label class="novpn" title="Показывать только видео с зеркалом на RuTube — они работают в России без VPN"><span class="sw ${store.get('novpn',false)?'on':''}" id="novpnSw"></span>Только без VPN (RuTube)</label></h2>
+    <div class="vlist" id="vlist">${m.videos.filter(v=>!store.get('novpn',false)||v.rt).map(v=>videoCard(v,m)).join('')||'<div class="empty"><b>Пока нет зеркал</b>Для этой карты ещё не нашлось дубликатов на RuTube. Выключи фильтр, чтобы увидеть YouTube-видео.</div>'}</div>
+    <h2>Чек-лист смоков</h2>
+    ${checklist(m)}
+  </div>`;
+  $('#novpnSw').onclick=()=>{store.set('novpn',!store.get('novpn',false));viewMap(m)};
+}
+function checklist(m){
+  const l=SMOKES[m.id]||[];const p=Learn.mapPct(m.id);const done=Math.round(p*l.length);
+  return `<div class="prog-card" id="pc">${ring(p)}<div><h3>${done===l.length&&l.length?'Карта выучена! 🔥':`Выучено ${done} из ${l.length}`}</h3><p>Отмечай дымы, которые уже уверенно кидаешь. Прогресс виден на карточке карты и хранится на устройстве.</p></div></div>
+  <div class="chk" id="chk">${l.map((x,i)=>{const k=m.id+':'+i;const on=Learn.has(k);return `<label class="${on?'on':''}" data-k="${k}"><input type="checkbox" ${on?'checked':''}><span class="box"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span><span class="n">${esc(x.n)}</span><span class="d">${esc(x.d)}</span></span><span class="side-tag ${x.s}">${x.s}</span></label>`}).join('')}</div>`;
+}
+app.addEventListener('change',e=>{
+  const lab=e.target.closest('.chk label[data-k]');if(!lab)return;
+  const on=Learn.toggle(lab.dataset.k);lab.classList.toggle('on',on);
+  const mid=lab.dataset.k.split(':')[0],m=MAPS.find(x=>x.id===mid),l=SMOKES[mid],p=Learn.mapPct(mid),done=Math.round(p*l.length);
+  const pc=$('#pc');if(pc){pc.innerHTML=`${ring(p)}<div><h3>${done===l.length?'Карта выучена! 🔥':`Выучено ${done} из ${l.length}`}</h3><p>Отмечай дымы, которые уже уверенно кидаешь. Прогресс виден на карточке карты и хранится на устройстве.</p></div>`}
+});
+
+/* ---------- Избранное ---------- */
+function viewFav(){
+  setTheme(null);const l=Fav.list(),items=ALL.filter(v=>l.includes(v.id));
+  app.innerHTML=`<div class="view"><div class="kick">Твоя коллекция</div><h1 style="font-size:clamp(30px,5vw,56px);margin:10px 0 24px">Избранное</h1>
+  ${items.length?`<div class="vlist">${items.map(v=>videoCard(v,v.map,true)).join('')}</div>`:`<div class="empty"><b>Пока пусто</b>Нажимай ♥ на видео — и оно появится здесь.<br><br><a href="#/maps" class="btn pri">К картам</a></div>`}</div>`;
+}
+
+/* =====================================================================
+   ПЛЕЕР (YouTube IFrame API + собственные контролы)
+===================================================================== */
+let ytReady=false,ytQueue=[],ytFailed=false,ytFailQueue=[];
+window.onYouTubeIframeAPIReady=()=>{ytReady=true;ytFailed=false;ytQueue.forEach(f=>f());ytQueue=[]};
+function loadYT(){ytFailed=false;const sc=document.createElement('script');sc.src='https://www.youtube.com/iframe_api';sc.onerror=()=>failYT();document.head.appendChild(sc);setTimeout(()=>{if(!ytReady)failYT()},8000)}
+function failYT(){if(ytReady)return;ytFailed=true;ytFailQueue.forEach(f=>f());ytFailQueue=[]}
+loadYT();
+const whenYT=(ok,fail)=>{if(ytReady)return ok();if(ytFailed)return fail&&fail();ytQueue.push(ok);fail&&ytFailQueue.push(fail)};
+// открыть ссылку даже там, где запрещены всплывающие окна (встроенные превью, webview)
+async function openExt(url,btn){let w=null;try{w=window.open(url,'_blank','noopener')}catch(e){}
+  if(w)return true;
+  try{await navigator.clipboard.writeText(url)}catch(e){const t=document.createElement('textarea');t.value=url;document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(x){}t.remove()}
+  if(btn){const o=btn.innerHTML;btn.innerHTML='✓ Ссылка скопирована — вставь в адресную строку';setTimeout(()=>btn.innerHTML=o,2500)}
+  return false}
+document.addEventListener('click',e=>{const a=e.target.closest('a[data-ext]');if(!a)return;e.preventDefault();openExt(a.href,a)});
+
+function viewWatch(m,v){
+  setTheme(m);
+  const idx=m.videos.indexOf(v),next=m.videos[idx+1],prev=m.videos[idx-1];
+  const auto=store.get('autonext',true),theater=store.get('theater',false);
+  app.innerHTML=`<div class="view">
+  <a href="#/map/${m.id}" class="back">${ICONS.back} ${m.name} · все видео</a>
+  <div class="watch ${theater?'theater':''}" id="watch">
+    <div>
+      <div class="src" id="srcTabs">${v.yt?`<button data-src="yt"><i></i>YouTube</button>`:''}${v.rt?`<button data-src="rt"><i></i>RuTube <small style="opacity:.7">без VPN</small></button>`:''}<span class="hint" id="srcHint"></span></div>
+      <div class="player paused" id="player" tabindex="0">
+        <div class="loader"><i></i></div>
+        <div id="yt"></div>
+        <div class="shield" id="shield"></div>
+        <div class="big"><i>${ICONS.play}</i></div>
+        <div class="flash l" id="flL">«<span>10 с</span></div>
+        <div class="flash r" id="flR">»<span>10 с</span></div>
+        <div class="toast" id="toast"></div>
+        <div class="rescue hide" id="rescue"><span id="rescueMsg">Видео не запускается?</span>${v.rt?`<button id="rescueRt">Смотреть на RuTube</button>`:''}<button id="rescueSimple">Простой плеер</button><button id="rescueBtn" ${store.get('native',true)?'hidden':''}>Разблокировать плеер</button>${v.yt?`<a href="https://www.youtube.com/watch?v=${v.yt}" data-ext rel="noopener">Открыть на YouTube</a>`:''}${v.rt?'':`<a href="https://rutube.ru/search/?query=${encodeURIComponent(v.title+' cs2')}" data-ext rel="noopener">Искать на RuTube</a>`}</div>
+        <div class="ctrls" id="ctrls">
+          <div class="seek" id="seek"><div class="track"><div class="buf" id="buf"></div><div class="fill" id="fill"></div><div class="ab hide" id="abBar"></div><div class="knob" id="knob"></div></div><div class="tip" id="tip">0:00</div></div>
+          <div class="cbar">
+            <button class="cb" id="bPlay" title="Играть/пауза (K, Пробел)">${ICONS.play}</button>
+            <button class="cb" id="bBack" title="−10 с (J, ←)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg><span class="lbl">10</span></button>
+            <button class="cb" id="bFwd" title="+10 с (L, →)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg><span class="lbl">10</span></button>
+            <div class="vol" id="volWrap"><button class="cb" id="bMute" title="Звук (M)"></button><input type="range" id="volR" min="0" max="100" value="100"></div>
+            <div class="time"><b id="tCur">0:00</b> <span>/ <span id="tDur">0:00</span></span></div>
+            <div class="spacer"></div>
+            <button class="cb txt" id="bAB" title="A-B повтор отрезка — идеально чтобы зазубрить бросок ([ начало, ] конец, \\ сброс)">A-B</button>
+            <div style="position:relative"><button class="cb txt" id="bSpd" title="Скорость (Shift+. / Shift+,)">1×</button>
+              <div class="pop" id="popSpd"><h6>Скорость</h6>${[.25,.5,.75,1,1.25,1.5,2].map(s=>`<button data-s="${s}" class="${s===1?'on':''}">${s}×${s===1?' <small>обычная</small>':''}</button>`).join('')}</div></div>
+            <div style="position:relative"><button class="cb" id="bQ" title="Качество"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
+              <div class="pop" id="popQ"><h6>Качество</h6><button data-q="auto" class="on">Авто</button><button data-q="hd1080">1080p</button><button data-q="hd720">720p</button><button data-q="large">480p</button><button data-q="medium">360p</button></div></div>
+            <button class="cb" id="bTheater" title="Широкий режим (T)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="6" width="20" height="12" rx="2"/></svg></button>
+            <button class="cb" id="bFs" title="На весь экран (F)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="winfo">
+        <h1>${esc(v.title)}</h1>
+        <div class="m">${v.hot?`<span class="badge hot">${ICONS.fire} Топ выбор</span>`:''}<span class="badge">${m.name}</span>${srcBadge(v)}<span>${esc(v.author)}</span>·<span>${v.fresh} назад</span>${v.views!=='—'?`·<span>${v.views} просмотров</span>`:''}</div>
+        <div class="note"><b style="color:var(--ma)">Совет:</b> ${esc(v.note)}</div>
+        <div class="acts">
+          <button class="btn" id="favBtn">${Fav.has(v.id)?ICONS.heart:ICONS.heartO} <span>${Fav.has(v.id)?'В избранном':'В избранное'}</span></button>
+          ${v.yt?`<a class="btn" href="https://www.youtube.com/watch?v=${v.yt}" data-ext rel="noopener">${ICONS.ext} <span>Открыть на YouTube</span></a>`:''}${v.rt?`<a class="btn" href="https://rutube.ru/video/${v.rt}/" data-ext rel="noopener">${ICONS.ext} <span>Открыть на RuTube</span></a>`:''}
+          <button class="btn" id="copyLink" title="Скопировать прямую ссылку на YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg> <span>Копировать ссылку</span></button>
+          <button class="btn" id="shareBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg> Поделиться</button>
+          <button class="btn" onclick="document.getElementById('keysModal').classList.add('open')">⌨ Клавиши</button>
+          ${prev?`<a class="btn" href="#/watch/${m.id}/${prev.id}">← Предыдущее</a>`:''}
+          ${next?`<a class="btn" href="#/watch/${m.id}/${next.id}">Следующее →</a>`:''}
+        </div>
+        <div class="keys"><span><kbd>Пробел</kbd>пауза</span><span><kbd>←</kbd><kbd>→</kbd>±5 с</span><span><kbd>J</kbd><kbd>L</kbd>±10 с</span><span><kbd>,</kbd><kbd>.</kbd>кадр на паузе</span><span><kbd>[</kbd><kbd>]</kbd>A-B отрезок</span><span><kbd>\\</kbd>сброс A-B</span><span><kbd>F</kbd>экран</span><span><kbd>T</kbd>широкий</span><span><kbd>M</kbd>звук</span><span><kbd>0–9</kbd>перейти к %</span></div>
+      </div>
+    </div>
+    <aside class="side">
+      <h3><span style="color:#fff">Плейлист · <span>${m.name}</span></span><label class="autonext"><span class="sw ${auto?'on':''}" id="autoSw"></span>автоплей</label></h3>
+      <div class="pl">${m.videos.map((x,i)=>`<a href="#/watch/${m.id}/${x.id}" class="pli ${x.id===v.id?'on':''}"><div class="th ${x.yt?'':'rtph'}" ${thumbStyle(x)}>${x.yt?'':'<span class="lg" style="font-size:11px">RUTUBE</span>'}<span class="dur">${x.dur}</span></div><div><div class="t">${i+1}. ${esc(x.title)}</div><div class="m">${esc(x.author)} · ${x.fresh}</div></div></a>`).join('')}</div>
+    </aside>
+  </div></div>`;
+
+  // --- избранное / автоплей / театр
+  $('#favBtn').onclick=e=>{const on=Fav.toggle(v.id);e.currentTarget.innerHTML=`${on?ICONS.heart:ICONS.heartO} <span>${on?'В избранном':'В избранное'}</span>`};
+  $('#copyLink').onclick=async e=>{const u=v.yt?'https://www.youtube.com/watch?v='+v.yt:'https://rutube.ru/video/'+v.rt+'/';try{await navigator.clipboard.writeText(u);e.currentTarget.querySelector('span').textContent='Скопировано ✓'}catch(err){prompt('Скопируй ссылку:',u)}};
+  $('#shareBtn').onclick=async e=>{const url=location.href,title=v.title+' — раскидки от Димарика';try{if(navigator.share){await navigator.share({title,url})}else{await navigator.clipboard.writeText(url);e.currentTarget.lastChild.textContent=' Ссылка скопирована'}}catch(err){}};
+  $('#autoSw').onclick=e=>{e.preventDefault();const on=!store.get('autonext',true);store.set('autonext',on);e.currentTarget.classList.toggle('on',on)};
+
+  Player=createPlayer(m,v,next);
+}
+
+function pickSource(v){const pref=store.get('src','auto');
+  if(pref==='rt'&&v.rt)return 'rt'; if(pref==='yt'&&v.yt)return 'yt';
+  if(v.yt&&!store.get('ytBroken',false))return 'yt'; return v.rt?'rt':'yt'}
+function createPlayer(m,v,next){
+  const el=$('#player'),shield=$('#shield'),fill=$('#fill'),buf=$('#buf'),knob=$('#knob'),tip=$('#tip'),seek=$('#seek');
+  const bPlay=$('#bPlay'),bMute=$('#bMute'),volR=$('#volR'),tCur=$('#tCur'),tDur=$('#tDur'),toast=$('#toast'),abBar=$('#abBar'),bAB=$('#bAB'),bSpd=$('#bSpd');
+  let yt,dur=0,tick,hideT,rescueT,A=null,B=null,muted=false,vol=store.get('yvol',100),dead=false,lastSaved=0,wasPlaying=false;
+  const say=t=>{toast.textContent=t;toast.classList.add('go');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('go'),1300)};
+  const ico=()=>{bMute.innerHTML=(muted||vol==0)?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4zM23 9l-6 6M17 9l6 6"/></svg>':vol<50?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4zM15.5 8.5a5 5 0 0 1 0 7"/></svg>':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4zM15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg>'};
+  volR.value=vol;volR.style.setProperty('--p',vol+'%');ico();
+
+  let source=pickSource(v);
+  const tabs=()=>{$$('#srcTabs button').forEach(b=>b.classList.toggle('on',b.dataset.src===source));$('#srcHint').textContent=source==='rt'?'RuTube работает в России без VPN · управление — кнопками самого плеера':(store.get('ytBroken')?'YouTube ранее не отвечал — если не идёт, переключись на RuTube':(store.get('native',true)?'Плеер разблокирован — жми Play прямо в видео':'Полное управление: A-B повтор, скорость, клавиши'))};
+  const useRt=()=>{ source='rt';clearTimeout(rescueT);try{yt&&yt.destroy()}catch(e){}yt=null;
+    let host=$('#yt');if(!host){host=document.createElement('div');host.id='yt';el.insertBefore(host,shield)}
+    host.outerHTML=`<iframe id="yt" src="https://rutube.ru/play/embed/${v.rt}?autoplay=1" allow="autoplay; fullscreen; clipboard-write; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+    $('.loader',el)?.remove();el.classList.add('rtmode');el.classList.remove('unlocked','hidectl');$('#rescue').classList.add('hide');Music.videoPlaying(true);tabs()};
+  const useYt=()=>{ source='yt';el.classList.remove('rtmode');el.classList.toggle('unlocked',store.get('native',true));$('#ctrls').style.display='';
+    let host=$('#yt');if(host)host.outerHTML='<div id="yt"></div>';else{host=document.createElement('div');host.id='yt';el.insertBefore(host,shield)}
+    if(!$('.loader',el)){const l=document.createElement('div');l.className='loader';l.innerHTML='<i></i>';el.prepend(l)}
+    tabs();startYt()};
+  $('#srcTabs').onclick=e=>{const b=e.target.closest('[data-src]');if(!b||b.dataset.src===source)return;b.dataset.src==='rt'?useRt():useYt()};
+  const simple=()=>{ // запасной режим: обычный встраиваемый плеер YouTube с его собственными кнопками
+    clearTimeout(rescueT);try{yt&&yt.destroy()}catch(e){}yt=null;
+    const host=$('#yt')||document.createElement('div');host.id='yt';if(!host.parentNode)el.insertBefore(host,shield);
+    host.outerHTML=`<iframe id="yt" src="https://www.youtube-nocookie.com/embed/${v.yt}?autoplay=1&rel=0&playsinline=1&hl=ru" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+    $('.loader',el)?.remove();el.classList.add('unlocked');el.classList.remove('paused','hidectl');$('#ctrls').style.display='none';$('#rescue').classList.add('hide');say('Простой плеер YouTube');Music.videoPlaying(true)};
+  const showRescue=msg=>{if(dead)return;$('#rescueMsg').textContent=msg;$('#rescue').classList.remove('hide');$('.loader',el)?.remove()};
+  const native=store.get('native',true);
+  const pv={autoplay:1,controls:native?1:0,rel:0,modestbranding:1,playsinline:1,iv_load_policy:3,disablekb:native?0:1,fs:native?1:0,hl:'ru',enablejsapi:1};
+  if(native)el.classList.add('unlocked');
+  if(/^https?:/.test(location.protocol))pv.origin=location.origin;
+  const ytBroken=why=>{store.set('ytBroken',true);if(v.rt&&store.get('src','auto')!=='yt'){say('YouTube недоступен — переключаю на RuTube');setTimeout(()=>{if(!dead&&source==='yt')useRt()},900)}else showRescue(why)};
+  function startYt(){ if(source!=='yt')return;
+  clearTimeout(rescueT);rescueT=setTimeout(()=>{if(!dead&&source==='yt'&&!yt)ytBroken('YouTube долго не отвечает (замедление или блокировка сети). Попробуй:')},9000);
+  whenYT(()=>{ if(dead||source!=='yt')return;
+    yt=new YT.Player('yt',{videoId:v.yt,playerVars:pv,
+      events:{
+        onReady(){ $('.loader',el)?.remove(); dur=yt.getDuration(); tDur.textContent=fmt(dur); yt.setVolume(vol);
+          const p=Prog.get(v.id); if(p>.02&&p<.95){yt.seekTo(p*dur,true);say('Продолжаем с '+fmt(p*dur))}
+          tick=setInterval(update,250);
+          store.set('ytBroken',false);clearTimeout(rescueT);rescueT=setTimeout(()=>{if(!dead&&source==='yt'&&st()!==1&&st()!==2&&!native){showRescue('Видео не стартовало. Попробуй:')}},7000); },
+        onStateChange(e){
+          const S=YT.PlayerState;
+          const playing=e.data===S.PLAYING;
+          if(playing){clearTimeout(rescueT);$('#rescue').classList.add('hide')}
+          el.classList.toggle('paused',!playing);
+          bPlay.innerHTML=playing?ICONS.pause:ICONS.play;
+          Music.videoPlaying(playing);
+          if(playing)scheduleHide();else showCtl();
+          if(e.data===S.ENDED){Prog.set(v.id,1);if(next&&store.get('autonext',true)){say('Следующее видео…');setTimeout(()=>{location.hash=`#/watch/${m.id}/${next.id}`},900)}}
+          if(e.data===S.CUED||e.data===S.UNSTARTED){}
+        },
+        onError(e){ showRescue(e&&e.data===150||e&&e.data===101?'Автор запретил встраивание этого видео:':'YouTube вернул ошибку '+(e&&e.data||'')+'. Попробуй:') }
+      }});
+  },()=>ytBroken('Скрипт YouTube не загрузился (сеть/блокировка). Попробуй:'));
+  }
+  function update(){ if(!yt||!yt.getCurrentTime)return; const t=yt.getCurrentTime(); if(!dur)dur=yt.getDuration()||0;
+    const p=dur?t/dur:0; fill.style.width=knob.style.left=(p*100)+'%'; buf.style.width=(yt.getVideoLoadedFraction()*100)+'%'; tCur.textContent=fmt(t);
+    if(A!=null&&B!=null&&t>=B){yt.seekTo(A,true)}
+    if(Date.now()-lastSaved>3000&&dur){Prog.set(v.id,p);lastSaved=Date.now()} }
+  const st=()=>yt&&yt.getPlayerState?yt.getPlayerState():-1;
+  const playing=()=>st()===1;
+  const toggle=()=>{if(!yt)return;playing()?yt.pauseVideo():yt.playVideo()};
+  const seekBy=d=>{if(!yt)return;const t=Math.min(dur,Math.max(0,yt.getCurrentTime()+d));yt.seekTo(t,true);const f=$(d<0?'#flL':'#flR');f.querySelector('span').textContent=Math.abs(d)+' с';f.classList.remove('go');void f.offsetWidth;f.classList.add('go');update()};
+  const setVol=(x,silent)=>{vol=Math.max(0,Math.min(100,x));store.set('yvol',vol);volR.value=vol;volR.style.setProperty('--p',vol+'%');if(yt){yt.setVolume(vol);if(vol>0&&muted){muted=false;yt.unMute()}}ico();if(!silent)say('Громкость '+vol+'%')};
+  const mute=()=>{if(!yt)return;muted=!muted;muted?yt.mute():yt.unMute();ico();say(muted?'Без звука':'Звук включён')};
+  const setSpd=s=>{if(!yt)return;yt.setPlaybackRate(s);bSpd.textContent=s+'×';$$('#popSpd button').forEach(b=>b.classList.toggle('on',+b.dataset.s===s));say('Скорость '+s+'×')};
+  const fs=()=>{const d=document;if(d.fullscreenElement||d.webkitFullscreenElement){(d.exitFullscreen||d.webkitExitFullscreen).call(d);return}
+    if(el.classList.contains('fake-fs')){el.classList.remove('fake-fs');return}
+    const r=el.requestFullscreen||el.webkitRequestFullscreen; if(r){r.call(el).catch?.(()=>el.classList.add('fake-fs'))}else el.classList.add('fake-fs');
+    try{screen.orientation&&screen.orientation.lock&&screen.orientation.lock('landscape').catch(()=>{})}catch(e){}};
+  const theater=()=>{const w=$('#watch');w.classList.toggle('theater');store.set('theater',w.classList.contains('theater'))};
+  const ab=()=>{ if(!yt)return; const t=yt.getCurrentTime();
+    if(A==null){A=t;say('Точка A: '+fmt(t))} else if(B==null){ if(t<=A){say('B должна быть после A');return} B=t;say(`Повтор ${fmt(A)} – ${fmt(B)}`)} else {A=B=null;say('A-B сброшен')}
+    drawAB() };
+  const drawAB=()=>{bAB.classList.toggle('on',A!=null);if(A!=null&&B!=null&&dur){abBar.classList.remove('hide');abBar.style.left=(A/dur*100)+'%';abBar.style.width=((B-A)/dur*100)+'%'}else abBar.classList.add('hide');bAB.textContent=A!=null&&B==null?'A-?':'A-B'};
+  const showCtl=()=>{el.classList.remove('hidectl');clearTimeout(hideT)};
+  const scheduleHide=()=>{clearTimeout(hideT);hideT=setTimeout(()=>{if(playing())el.classList.add('hidectl')},2600)};
+
+  // события
+  let lastTap=0;
+  shield.addEventListener('click',e=>{ const now=Date.now(),r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width;
+    if(now-lastTap<300){ x<.35?seekBy(-10):x>.65?seekBy(10):fs(); lastTap=0; return } lastTap=now; setTimeout(()=>{if(lastTap===now){toggle();lastTap=0}},300) });
+  el.addEventListener('mousemove',()=>{showCtl();scheduleHide()});el.addEventListener('touchstart',()=>{showCtl();scheduleHide()},{passive:true});
+  el.addEventListener('mouseleave',()=>{if(playing())scheduleHide()});
+  $('#rescueSimple').onclick=simple;if($('#rescueRt'))$('#rescueRt').onclick=useRt;
+  // старт
+  if(source==='rt')useRt();else{tabs();startYt()}
+  $('#rescueBtn').onclick=()=>{el.classList.add('unlocked');el.classList.remove('hidectl');$('#rescue').classList.add('hide');say('Прямое управление плеером YouTube включено')};
+  bPlay.onclick=toggle;$('#bBack').onclick=()=>seekBy(-10);$('#bFwd').onclick=()=>seekBy(10);bMute.onclick=mute;
+  volR.oninput=e=>setVol(+e.target.value,true);
+  $('#bFs').onclick=fs;$('#bTheater').onclick=theater;bAB.onclick=ab;
+  const pops=()=>$$('.pop').forEach(p=>p.classList.remove('open'));
+  bSpd.onclick=e=>{e.stopPropagation();const o=$('#popSpd').classList.contains('open');pops();$('#popSpd').classList.toggle('open',!o)};
+  $('#bQ').onclick=e=>{e.stopPropagation();const o=$('#popQ').classList.contains('open');pops();$('#popQ').classList.toggle('open',!o)};
+  $('#popSpd').onclick=e=>{const b=e.target.closest('[data-s]');if(b){setSpd(+b.dataset.s);pops()}};
+  $('#popQ').onclick=e=>{const b=e.target.closest('[data-q]');if(b&&yt){yt.setPlaybackQuality(b.dataset.q);$$('#popQ button').forEach(x=>x.classList.toggle('on',x===b));say('Качество: '+b.textContent);pops()}};
+  document.addEventListener('click',pops);
+  // перемотка
+  const pos=e=>{const r=seek.getBoundingClientRect();const cx=(e.touches?e.touches[0].clientX:e.clientX);return Math.min(1,Math.max(0,(cx-r.left)/r.width))};
+  let drag=false;
+  seek.addEventListener('mousemove',e=>{const p=pos(e);tip.style.left=(p*100)+'%';tip.textContent=fmt(p*dur);if(drag){fill.style.width=knob.style.left=(p*100)+'%';tCur.textContent=fmt(p*dur)}});
+  seek.addEventListener('mousedown',e=>{drag=true;const p=pos(e);fill.style.width=knob.style.left=(p*100)+'%'});
+  addEventListener('mouseup',e=>{if(drag){drag=false;if(yt)yt.seekTo(pos(e)*dur,true)}});
+  seek.addEventListener('touchstart',e=>{drag=true},{passive:true});
+  seek.addEventListener('touchmove',e=>{const p=pos(e);fill.style.width=knob.style.left=(p*100)+'%';tCur.textContent=fmt(p*dur)},{passive:true});
+  seek.addEventListener('touchend',e=>{drag=false;if(yt&&e.changedTouches){const r=seek.getBoundingClientRect();const p=Math.min(1,Math.max(0,(e.changedTouches[0].clientX-r.left)/r.width));yt.seekTo(p*dur,true)}});
+  // клавиатура
+  const key=e=>{ if(e.target.matches('input,textarea'))return; if(!yt)return; const k=e.key;
+    const map={' ':toggle,'k':toggle,'K':toggle,'л':toggle,'ArrowLeft':()=>seekBy(-5),'ArrowRight':()=>seekBy(5),'j':()=>seekBy(-10),'l':()=>seekBy(10),'о':()=>seekBy(-10),'д':()=>seekBy(10),'ArrowUp':()=>setVol(vol+5),'ArrowDown':()=>setVol(vol-5),'m':mute,'ь':mute,'f':fs,'а':fs,'t':theater,'е':theater,'[':ab,']':ab,'х':ab,'ъ':ab,'\\':()=>{A=B=null;drawAB();say('A-B сброшен')},
+      ',':()=>{if(!playing())seekBy(-1/30)},'.':()=>{if(!playing())seekBy(1/30)},'>':()=>setSpd(Math.min(2,(yt.getPlaybackRate()||1)+.25)),'<':()=>setSpd(Math.max(.25,(yt.getPlaybackRate()||1)-.25)),'Escape':()=>el.classList.remove('fake-fs')};
+    if(map[k]){e.preventDefault();map[k]();return}
+    if(/^[0-9]$/.test(k)){yt.seekTo(dur*(+k)/10,true);update()} };
+  document.addEventListener('keydown',key);
+  const onFsChange=()=>{};document.addEventListener('fullscreenchange',onFsChange);
+  // пауза при сворачивании вкладки — музыка тоже приглушается корректно
+  const vis=()=>{if(document.hidden&&playing()){wasPlaying=true}};document.addEventListener('visibilitychange',vis);
+
+  return {destroy(){dead=true;clearInterval(tick);clearTimeout(hideT);clearTimeout(rescueT);document.removeEventListener('keydown',key);document.removeEventListener('click',pops);document.removeEventListener('visibilitychange',vis);Music.videoPlaying(false);try{yt&&yt.destroy()}catch(e){}}};
+}
+
+/* =====================================================================
+   PWA
+===================================================================== */
+if('serviceWorker'in navigator&&location.protocol.startsWith('http'))addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+route();
+</script>
+</body>
+</html>
